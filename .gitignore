@@ -1,0 +1,12 @@
+# Ignore everything
+/*
+!.ackrc
+!.bash_aliases
+!.bash_profile
+!.bashrc
+!deploy.sh
+!.gitignore
+!.hyper.js
+!.vim/
+!.vimrc
+**/.DS_Store
