@@ -20,11 +20,23 @@ function! HasPaste()
   return ''
 endfunction
 
+" Execute pathogen plugin mgt.
+execute pathogen#infect()
+
+
+" Run time path appends {{
+
+  " set runtime path to include fuzzyfinder
+  set rtp+=/usr/local/opt/fzf
+
+  " set the runtime path to include Vundle and initialize
+  set rtp+=~/.vim/bundle/Vundle.vim
+
+" }}
+
+
 " Turn off filetype before vundle begins
 filetype off
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
 
 " Vundle plugin begins
 call vundle#begin()
@@ -35,6 +47,14 @@ Plugin 'L9'
 
 " Vundle ends
 call vundle#end()
+
+" Determine filetype to add indent and enable plugins
+filetype plugin indent on
+filetype plugin on
+filetype indent on
+
+" Fix backspace indent
+set backspace=indent,eol,start
 
 " Turn on Syntax highlighting
 syntax enable
@@ -55,37 +75,14 @@ set hidden
 set wildmenu
 set wildignore=*.o,*.pyc,*.swp,*.class
 
-" Determine filetype to add indent and enable plugins
-filetype plugin indent on
-filetype plugin on
-filetype indent on
-
-" Fix backspace indent
-set backspace=indent,eol,start
-
 " Faster terminal
 set ttyfast
-
-" Searching
-" =========
-
-" Highlight search and include partial matches for searches
-set hlsearch
-set incsearch
-
-" Case insensitive search except when using caps
-set ignorecase
-set smartcase
 
 " Confirm dialog before file exits
 set confirm
 
 " Show partial commands on last line
 set showcmd
-"set cmdheight=2
-
-" Execute pathogen plugin mgt.
-execute pathogen#infect()
 
 " Status Line
 set laststatus=2 " Show status line
@@ -93,14 +90,40 @@ set laststatus=2 " Show status line
 " Show current position
 set ruler
 
-" Indentation
-set autoindent
-set smartindent
-set wrap
-set expandtab
-set shiftwidth=2
-set tabstop=2
-set softtabstop=2
+
+" Searching {{
+
+  " Highlight search and include partial matches for searches
+  set hlsearch
+  set incsearch
+
+  " Case insensitive search except when using caps
+  set ignorecase
+  set smartcase
+
+" }}
+
+
+" Indentation {{
+
+  set autoindent
+  set smartindent
+  set wrap
+  set expandtab
+  set shiftwidth=2
+  set tabstop=2
+  set softtabstop=2
+
+" }}
+
+
+" Auto Commands {{
+
+  " Delete trailing whitespace when files get opened
+  autocmd BufWritePre * silent! %s:\(\S*\) \+$:\1:
+
+" }}
+
 
 " Show matching parenthesis
 set showmatch
@@ -131,54 +154,71 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
-" Toggle between paste and nopaste
-set pastetoggle=<leader><Tab>
-
-" Symbols
-" =======
-
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
-
-" airline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-
 " Editorconfig compatibility with fugitive
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
-" Mappings
-" ========
+" Use ag for :Ack searches
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
-" Map leader as space
-let mapleader=' '
+" Toggle between paste and nopaste
+set pastetoggle=<F2>
 
-" Provide hjkl movements in Insert mode via the <Alt> modifier key
-inoremap <A-h> <C-o>h
-inoremap <A-j> <C-o>j
-inoremap <A-k> <C-o>k
-inoremap <A-l> <C-o>l
 
-" Map no highlight to <esc> key
-nnoremap <esc> :noh<return><esc>
-nnoremap <Tab>2 :set tabstop=2<CR>
-nnoremap <Tab>4 :set tabstop=4<CR>
+" Symbols {{
 
-" Map NERDTree to shortcut
-map <C-n> :NERDTreeToggle<CR>
+  " unicode symbols
+  let g:airline_left_sep = '»'
+  let g:airline_left_sep = '▶'
+  let g:airline_right_sep = '«'
+  let g:airline_right_sep = '◀'
+  let g:airline_symbols.linenr = '␊'
+  let g:airline_symbols.linenr = '␤'
+  let g:airline_symbols.linenr = '¶'
+  let g:airline_symbols.branch = '⎇'
+  let g:airline_symbols.paste = 'ρ'
+  let g:airline_symbols.paste = 'Þ'
+  let g:airline_symbols.paste = '∥'
+  let g:airline_symbols.whitespace = 'Ξ'
+
+  " airline symbols
+  let g:airline_left_sep = ''
+  let g:airline_left_alt_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_right_alt_sep = ''
+  let g:airline_symbols.branch = ''
+  let g:airline_symbols.readonly = ''
+  let g:airline_symbols.linenr = ''
+
+" }}
+
+
+" Netrw config {{
+
+  let g:netrw_liststyle = 3
+  let g:netrw_banner = 0
+  let g:netrw_browse_split = 4
+  let g:netrw_winsize = 25
+  let g:netrw_altv = 1
+
+" }}
+
+
+" Mappings {{
+
+  " Map leader as space
+  let mapleader=' '
+
+  " Provide hjkl movements in Insert mode via the <Alt> modifier key
+  inoremap <A-h> <C-o>h
+  inoremap <A-j> <C-o>j
+  inoremap <A-k> <C-o>k
+  inoremap <A-l> <C-o>l
+
+  " Map no highlight to <esc> key
+  nnoremap <esc> :noh<return><esc>
+  nnoremap <Tab>2 :set tabstop=2<CR>
+  nnoremap <Tab>4 :set tabstop=4<CR>
+
+  " Map NERDTree to shortcut
+  map <C-n> :NERDTreeToggle<CR>
+" }}

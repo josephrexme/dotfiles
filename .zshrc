@@ -80,3 +80,5 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # NVM setup
 export NVM_DIR="/Users/silverdust/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

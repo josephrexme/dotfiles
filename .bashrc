@@ -10,3 +10,5 @@ gpip(){
   PIP_REQUIRE_VIRTUALENV="" pip "$@"
 }
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
