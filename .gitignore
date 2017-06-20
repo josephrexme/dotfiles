@@ -9,4 +9,5 @@
 !.hyper.js
 !.vim/
 !.vimrc
+!.zshrc
 **/.DS_Store
