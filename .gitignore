@@ -5,8 +5,10 @@
 !.bash_profile
 !.bashrc
 !deploy.sh
+!.gitconfig
 !.gitignore
 !.hyper.js
+!.tmux.conf
 !.vim/
 !.vimrc
 !.zshrc

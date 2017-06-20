@@ -51,9 +51,6 @@ set autoread
 " Reuse the same window and switch from unsaved buffer
 set hidden
 
-" Map leader from default of \ to ,
-let mapleader=','
-
 " Visual autocompletion and ignores
 set wildmenu
 set wildignore=*.o,*.pyc,*.swp,*.class
@@ -68,6 +65,9 @@ set backspace=indent,eol,start
 
 " Faster terminal
 set ttyfast
+
+" Searching
+" =========
 
 " Highlight search and include partial matches for searches
 set hlsearch
@@ -131,8 +131,11 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
-" F!! to toggle between paste and nopaste
-set pastetoggle=<F11>
+" Toggle between paste and nopaste
+set pastetoggle=<leader><Tab>
+
+" Symbols
+" =======
 
 " unicode symbols
 let g:airline_left_sep = '»'
@@ -160,6 +163,12 @@ let g:airline_symbols.linenr = ''
 " Editorconfig compatibility with fugitive
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
+" Mappings
+" ========
+
+" Map leader as space
+let mapleader=' '
+
 " Provide hjkl movements in Insert mode via the <Alt> modifier key
 inoremap <A-h> <C-o>h
 inoremap <A-j> <C-o>j
@@ -168,6 +177,8 @@ inoremap <A-l> <C-o>l
 
 " Map no highlight to <esc> key
 nnoremap <esc> :noh<return><esc>
+nnoremap <Tab>2 :set tabstop=2<CR>
+nnoremap <Tab>4 :set tabstop=4<CR>
 
 " Map NERDTree to shortcut
 map <C-n> :NERDTreeToggle<CR>
