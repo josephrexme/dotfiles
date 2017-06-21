@@ -128,6 +128,9 @@ set title
   " Delete trailing whitespace when files get opened
   autocmd BufWritePre * silent! %s:\(\S*\) \+$:\1:
 
+  " Use tabs in gitconfig
+  autocmd BufRead .gitconfig setlocal noexpandtab | %retab!
+
 " }}}
 
 
@@ -230,6 +233,9 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
   inoremap <A-j> <C-o>j
   inoremap <A-k> <C-o>k
   inoremap <A-l> <C-o>l
+  " Fast editing and sourcing of `.vimrc`
+  nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
+  nnoremap <Leader>sv :source $MYVIMRC<CR>
 
   " Map no highlight to <esc> key
   nnoremap <esc> :noh<return><esc>

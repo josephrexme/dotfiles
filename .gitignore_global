@@ -1,5 +1,5 @@
 .DS_Store
 .sass-cache
-*sw[nop]
+*.sw[nop]
 node_modules
 tags
