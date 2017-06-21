@@ -222,6 +222,8 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
   " Fuzzy Finder map
   nmap <C-p> :FZF<CR>
   nmap <C-a> :FZF<CR>
+  " Convert spaces to tabs
+  nmap <Leader>tt :set noexpandtab<CR>:%retab!<CR>
 
   " Provide hjkl movements in Insert mode via the <Alt> modifier key
   inoremap <A-h> <C-o>h
@@ -241,8 +243,6 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
   nnoremap <Leader>bg :let &background = (&background == "dark" ? "light" : "dark")<CR>
   " Strip trailing whitespace
   nnoremap <Leader>ws :%s/ \+$//<CR>
-  " Convert tabs to spaces
-  nnoremap <Leader>tt :retab<CR>
   " Vim-like window navigation
   nnoremap <C-h> <C-w>h
   nnoremap <C-j> <C-w>j

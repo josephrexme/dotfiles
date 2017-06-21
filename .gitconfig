@@ -1,6 +1,7 @@
 # Glogal git configuration file.
 [alias]
 	praise = blame
+	today = log --since=00:00:00 --all --no-merges --oneline --author=joerexko@gmail.com
 [user]
 	name = Joseph Rex
 	email = joerexko@gmail.com
