@@ -24,7 +24,7 @@ endfunction
 execute pathogen#infect()
 
 
-" Run time path appends {{
+" Run time path appends {{{
 
   " set runtime path to include fuzzyfinder
   set rtp+=/usr/local/opt/fzf
@@ -32,7 +32,7 @@ execute pathogen#infect()
   " set the runtime path to include Vundle and initialize
   set rtp+=~/.vim/bundle/Vundle.vim
 
-" }}
+" }}}
 
 
 " Turn off filetype before vundle begins
@@ -97,7 +97,7 @@ set ruler
 set title
 
 
-" Searching {{
+" Searching {{{
 
   " Highlight search and include partial matches for searches
   set hlsearch
@@ -107,10 +107,10 @@ set title
   set ignorecase
   set smartcase
 
-" }}
+" }}}
 
 
-" Indentation {{
+" Indentation {{{
 
   set autoindent
   set smartindent
@@ -120,15 +120,15 @@ set title
   set tabstop=2
   set softtabstop=2
 
-" }}
+" }}}
 
 
-" Auto Commands {{
+" Auto Commands {{{
 
   " Delete trailing whitespace when files get opened
   autocmd BufWritePre * silent! %s:\(\S*\) \+$:\1:
 
-" }}
+" }}}
 
 
 " Show matching parenthesis
@@ -172,7 +172,7 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 
-" Symbols {{
+" Symbols {{{
 
   " unicode symbols
   let g:airline_left_sep = '»'
@@ -197,10 +197,10 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ''
 
-" }}
+" }}}
 
 
-" Netrw config {{
+" Netrw config {{{
 
   let g:netrw_liststyle = 3
   let g:netrw_banner = 0
@@ -208,10 +208,10 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
   let g:netrw_winsize = 25
   let g:netrw_altv = 1
 
-" }}
+" }}}
 
 
-" Mappings {{
+" Mappings {{{
 
   " Map leader as space
   let mapleader=' '
@@ -255,4 +255,4 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
   " Toggle invisible tabs and trails
   nnoremap <Leader>in :set list!<CR>
 
-" }}
+" }}}
