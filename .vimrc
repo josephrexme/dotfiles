@@ -71,6 +71,9 @@ set autoread
 " Reuse the same window and switch from unsaved buffer
 set hidden
 
+" Looking at tags
+set tags+=tags;$HOME
+
 " Visual autocompletion and ignores
 set wildmenu
 set wildignore=*.o,*.pyc,*.swp,*.class
@@ -89,6 +92,9 @@ set laststatus=2 " Show status line
 
 " Show current position
 set ruler
+
+" Show file title in terminal
+set title
 
 
 " Searching {{
@@ -131,6 +137,11 @@ set showmatch
 " Insert tab on the start of a line
 set smarttab
 
+" Show invisible tabs and trails
+set list
+" What invisible tabs and trails show as when toggled on
+set listchars=tab:»-,trail:·
+
 " Prevent Beeps
 set visualbell
 set noerrorbells
@@ -159,9 +170,6 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " Use ag for :Ack searches
 let g:ackprg = 'ag --nogroup --nocolor --column'
-
-" Toggle between paste and nopaste
-set pastetoggle=<F2>
 
 
 " Symbols {{
@@ -208,6 +216,13 @@ set pastetoggle=<F2>
   " Map leader as space
   let mapleader=' '
 
+  " Map NERDTree to shortcut
+  map <C-n> :NERDTreeToggle<CR>
+
+  " Fuzzy Finder map
+  nmap <C-p> :FZF<CR>
+  nmap <C-a> :FZF<CR>
+
   " Provide hjkl movements in Insert mode via the <Alt> modifier key
   inoremap <A-h> <C-o>h
   inoremap <A-j> <C-o>j
@@ -218,7 +233,26 @@ set pastetoggle=<F2>
   nnoremap <esc> :noh<return><esc>
   nnoremap <Tab>2 :set tabstop=2<CR>
   nnoremap <Tab>4 :set tabstop=4<CR>
+  " Toggle indentLine plugin on/off
+  nnoremap <Leader>i :IndentLinesToggle<CR>
+  " Toggle pasting mode
+  nnoremap <Leader>p :set paste!<CR>
+  " Toggle light/dark backgrounds
+  nnoremap <Leader>bg :let &background = (&background == "dark" ? "light" : "dark")<CR>
+  " Strip trailing whitespace
+  nnoremap <Leader>ws :%s/ \+$//<CR>
+  " Convert tabs to spaces
+  nnoremap <Leader>tt :retab<CR>
+  " Vim-like window navigation
+  nnoremap <C-h> <C-w>h
+  nnoremap <C-j> <C-w>j
+  nnoremap <C-k> <C-w>k
+  nnoremap <C-l> <C-w>l
+  " `gb` switches to next buffer, like `gt` does with tabs
+  nnoremap gb :bn<CR>
+  " `gB` switches to previous buffer, like `gT` does with tabs
+  nnoremap gB :bp<CR>
+  " Toggle invisible tabs and trails
+  nnoremap <Leader>in :set list!<CR>
 
-  " Map NERDTree to shortcut
-  map <C-n> :NERDTreeToggle<CR>
 " }}

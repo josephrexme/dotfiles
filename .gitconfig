@@ -1,6 +1,8 @@
-# Git configuration file.
+# Glogal git configuration file.
 [alias]
-  praise = blame
+	praise = blame
 [user]
-  name = Joseph Rex
-  email = joerexko@gmail.com
+	name = Joseph Rex
+	email = joerexko@gmail.com
+[core]
+	excludesfile = /Users/silverdust/.gitignore_global

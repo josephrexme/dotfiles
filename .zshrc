@@ -70,6 +70,7 @@ export ARCHFLAGS="-arch x86_64"
 alias ls='ls -GFh'
 alias gas='git status -sb'
 alias deploy='./deploy.sh'
+alias ctags="$(brew --prefix)/bin/ctags"
 
 # Autojump trigger
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
