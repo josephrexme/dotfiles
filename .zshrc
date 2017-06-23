@@ -71,6 +71,7 @@ alias ls='ls -GFh'
 alias gas='git status -sb'
 alias deploy='./deploy.sh'
 alias ctags="$(brew --prefix)/bin/ctags"
+alias git=hub
 
 # Autojump trigger
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
