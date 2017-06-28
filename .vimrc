@@ -237,6 +237,9 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
   nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
   nnoremap <Leader>sv :source $MYVIMRC<CR>
 
+  " Close active window
+  nnoremap <Leader>x :q<CR>
+
   " Map no highlight to <esc> key
   nnoremap <esc> :noh<return><esc>
   nnoremap <Tab>2 :set tabstop=2<CR>
