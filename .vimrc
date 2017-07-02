@@ -12,8 +12,12 @@ set encoding=utf-8
 " Terminal colors
 set t_Co=256
 
+" Maintain undo history between sessions
+set undofile
+set undodir=~/.vim/undodir
+
 " Function Definition
-function! HasPaste()
+function! HasPaste() " Redundant but I'm still keeping
   if &paste
     return 'PASTE MODE '
   endif
