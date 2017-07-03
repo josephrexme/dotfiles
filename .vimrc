@@ -230,7 +230,6 @@ let g:javascript_plugin_jsdoc = 1
 
   " Fuzzy Finder map
   nmap <C-p> :FZF<CR>
-  nmap <C-a> :FZF<CR>
   " Convert spaces to tabs
   nmap <Leader>tt :set noexpandtab<CR>:%retab!<CR>
 
@@ -269,5 +268,7 @@ let g:javascript_plugin_jsdoc = 1
   nnoremap gB :bp<CR>
   " Toggle invisible tabs and trails
   nnoremap <Leader>in :set list!<CR>
+  " Highlight all
+  nnoremap <C-a> ggVG
 
 " }}}
