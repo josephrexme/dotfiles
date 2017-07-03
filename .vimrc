@@ -178,6 +178,8 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 " Use ag for :Ack searches
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
+" Highlight JSdocs with vim-javascript
+let g:javascript_plugin_jsdoc = 1
 
 " Symbols {{{
 

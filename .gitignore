@@ -12,6 +12,7 @@
 !.hyper.js
 !.tmux.conf
 !.vim/
+.vim/undodir
 !.vimrc
 !.zshrc
 **/.DS_Store
