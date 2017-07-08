@@ -22,37 +22,28 @@ end
 configWatcher = hs.pathwatcher.new(os.getenv('HOME') .. '/.hammerspoon/', configReload):start()
 
 --
--- Turn off Slack and Rambox on battery
+-- Turn off Slack and Rambox when battery reaches 35%
 --
 function watchBatteryUnplug()
   local powerSource = hs.battery.powerSource()
-  -- Show when power source has changed
-  if powerSource == 'Battery Power' then
-    alert('Charger Unplugged')
-  end
   local percentage = hs.battery.percentage()
-  -- Close apps when battery goes lower than 35%
-  if percentage < 35.0 then
-    -- local ramboxWatcher = hs.application.watcher.new(function(name, eventType, app)
-    --   if eventType ~= hs.application.watcher.activated then return end
-    --   if name == 'Rambox' then
-    --     app:kill()
-    --   end
-    -- end)
-    -- ramboxWatcher:start()
+  if powerSource == 'Battery Power' and percentage <= 35.0 then
+    hs.application.get('Rambox'):kill()
+    hs.application.get('Slack'):kill()
   end
 end
-batteryWatcher = hs.battery.watcher.new(watchBatteryUnplug):start();
+batteryWatcher = hs.battery.watcher.new(watchBatteryUnplug):start()
 
 
 --
 --  Start app on School WiFi
 --
-function onSchoolWifi()
-  schoolSSID = 'UWMWiFi'
-  newSSID = hs.wifi.currentNework()
+function SSIDChange()
+  local schoolSSID = 'UWMWiFi'
+  local newSSID = hs.wifi.currentNework()
   if newSSID == schoolSSID then
     hs.spotify.play()
     hs.audiodevice.defaultOutputDevice():setVolume(10)
   end
 end
+wifiWatcher = hs.wifi.watcher.new(SSIDChange):start()
