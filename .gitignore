@@ -10,6 +10,8 @@
 !.gitignore_global
 !.hammerspoon
 !.hyper.js
+!.iterm2
+!.iterm2_shell_integration.zsh
 !.tmux.conf
 !.vim/
 .vim/undodir

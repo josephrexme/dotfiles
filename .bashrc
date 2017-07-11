@@ -10,5 +10,12 @@ gpip(){
   PIP_REQUIRE_VIRTUALENV="" pip "$@"
 }
 
+# Changing shell structure
+PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+CLICOLOR=1
+LSCOLORS=ExFxBxDxCxegedabagacad
+
+test -f ~/.bash_aliases && source ~/.bash_aliases
+
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
