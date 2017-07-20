@@ -232,6 +232,8 @@ let g:javascript_plugin_jsdoc = 1
   nmap <C-p> :FZF<CR>
   " Convert spaces to tabs
   nmap <Leader>tt :set noexpandtab<CR>:%retab!<CR>
+  " Convert tabs to spaces
+  nmap <Leader>ts :set expandtab<CR>:%retab!<CR>
 
   " Provide hjkl movements in Insert mode via the <Alt> modifier key
   inoremap <A-h> <C-o>h
