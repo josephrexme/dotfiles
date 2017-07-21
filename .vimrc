@@ -45,6 +45,8 @@ filetype off
 " Vundle plugin begins
 call vundle#begin()
 
+Plugin 'Valloric/YouCompleteMe'
+
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'L9'
