@@ -159,7 +159,7 @@ set noerrorbells
 set updatetime=250
 
 " A color scheme (More at vimcolors.com)
-colorscheme delek
+colorscheme dzo
 
 " Rid off default mode indicator for vim-airline
 set noshowmode
