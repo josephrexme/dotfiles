@@ -2,6 +2,7 @@
 [alias]
 	praise = blame
 	today = log --since=00:00:00 --all --no-merges --oneline --author=joerexko@gmail.com
+	pr = pull-request
 [color]
 	branch = auto
 	diff = auto
