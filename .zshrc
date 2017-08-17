@@ -78,6 +78,8 @@ alias git=hub
 alias glone='git clone'
 
 # Functions
+
+# Override hub to cd into folders after cloning
 hub() {
   local tmp=$(mktemp)
   local repo_name
