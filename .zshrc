@@ -75,6 +75,23 @@ alias ls='ls -GFh'
 alias deploy='./deploy.sh'
 alias ctags="$(brew --prefix)/bin/ctags"
 alias git=hub
+alias glone='git clone'
+
+# Functions
+hub() {
+  local tmp=$(mktemp)
+  local repo_name
+
+  if [ "$1" = clone ] ; then
+    $(brew --prefix)/bin/hub "$@" 2>&1 | tee $tmp
+    repo_name=$(awk -F"[ ']+" '/Cloning into/ {print $3}' $tmp)
+    rm $tmp
+    printf "Changing to directory %s\n" "$repo_name"
+    cd "$repo_name"
+  else
+    $(brew --prefix)/bin/hub "$@"
+  fi
+}
 
 # Autojump trigger
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
