@@ -47,6 +47,8 @@ call vundle#begin()
 
 Plugin 'Valloric/YouCompleteMe'
 
+Plugin 'posva/vim-vue'
+
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'L9'
