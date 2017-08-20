@@ -76,6 +76,7 @@ alias deploy='./deploy.sh'
 alias ctags="$(brew --prefix)/bin/ctags"
 alias git=hub
 alias glone='git clone'
+alias be='bundle exec'
 
 # Functions
 
