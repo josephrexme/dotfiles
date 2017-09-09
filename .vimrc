@@ -87,10 +87,6 @@ Plug 'tomtom/tcomment_vim'
 
 Plug 'ternjs/tern_for_vim'
 
-Plug 'sirver/UltiSnips' " {{{
-  let g:UltiSnipsEditSplit = 'vertical'
-" }}}
-
 Plug 'hail2u/vim-css3-syntax'
 
 Plug 'sgur/vim-editorconfig'
@@ -117,7 +113,23 @@ Plug 'vim-syntastic/syntastic' " {{{
   let g:syntastic_javascript_checkers = ['eslint']
 " }}}
 
-Plug 'Valloric/YouCompleteMe'
+Plug 'ervandew/supertab' " {{{
+  let g:SuperTabDefaultCompletionType = '<C-n>'
+" }}}
+
+Plug 'sirver/UltiSnips' " {{{
+  " Add default snippets
+  Plug 'honza/vim-snippets'
+  let g:UltiSnipsEditSplit = 'vertical'
+  let g:UltiSnipsExpandTrigger = '<tab>'
+  let g:UltiSnipsJumpForwardTrigger = '<tab>'
+  let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+" }}}
+
+Plug 'Valloric/YouCompleteMe' " {{{
+  let g:ycm_key_list_select_completion = ['C-n', '<Down>']
+  let g:ycm_key_list_previous_completion = ['C-p', '<Up>']
+" }}}
 
 call plug#end()
 " }}}
@@ -280,6 +292,8 @@ colorscheme dzo
   nnoremap <Tab>4 :set tabstop=4<CR>
   " Plug install
   nnoremap <Leader>i :PlugInstall<CR>
+  " Plug Clean
+  nnoremap <Leader>un :PlugClean<CR>
   " Toggle pasting mode
   nnoremap <Leader>p :set paste!<CR>
   " Toggle light/dark backgrounds
