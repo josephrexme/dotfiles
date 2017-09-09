@@ -14,7 +14,6 @@
 !.iterm2_shell_integration.zsh
 !.tern-config
 !.tmux.conf
-!.vim/
 !.vimrc
 !.zshrc
 **/.DS_Store

@@ -16,21 +16,10 @@ set t_Co=256
 set undofile
 set undodir=~/.vim/undodir
 
-" Function Definition
-function! HasPaste() " Redundant but I'm still keeping
-  if &paste
-    return 'PASTE MODE '
-  endif
-  return ''
-endfunction
-
 " Run time path appends {{{
 
   " set runtime path to include fuzzyfinder
   set rtp+=/usr/local/opt/fzf
-
-  " set the runtime path to include Vundle and initialize
-  set rtp+=~/.vim/bundle/Vundle.vim
 
 " }}}
 
@@ -38,23 +27,26 @@ endfunction
 " Turn off filetype before vundle begins
 filetype off
 
-" Vundle plugin begins
-call vundle#begin()
+" Install vim-plug if it doesn't exist in autoload directory
+if empty(glob("~/.vim/autoload/plug.vim"))
+  execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
 
-Plugin 'vim-airline/vim-airline'
+" Begin plugs {{{
+call  plug#begin('~/.vim/plugged')
 
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
 
-Plugin 'Valloric/YouCompleteMe'
+Plug 'vim-airline/vim-airline-themes'
 
-Plugin 'posva/vim-vue'
+Plug 'Valloric/YouCompleteMe'
 
-Plugin 'VundleVim/Vundle.vim'
+Plug 'posva/vim-vue'
 
-Plugin 'L9'
+Plug 'vim-scripts/L9'
 
-" Vundle ends
-call vundle#end()
+call plug#end()
+" }}}
 
 " Determine filetype to add indent and enable plugins
 filetype plugin indent on
