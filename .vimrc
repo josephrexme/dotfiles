@@ -1,5 +1,5 @@
 "
-" Vimrc - Joseph Rex <joseph@strich.io>
+" Vimrc - Joseph Rex <silverdust>
 "
 
 " Vim compatibility over vi
@@ -14,6 +14,10 @@ set t_Co=256
 " Maintain undo history between sessions
 set undofile
 set undodir=~/.vim/undodir
+" Create one if the directory doesn't exist
+if empty(glob("~/.vim/undodir"))
+  execute '!mkdir ~/.vim/undodir'
+endif
 
 " Run time path appends {{{
 
@@ -83,6 +87,10 @@ Plug 'tomtom/tcomment_vim'
 
 Plug 'ternjs/tern_for_vim'
 
+Plug 'sirver/UltiSnips' " {{{
+  let g:UltiSnipsEditSplit = 'vertical'
+" }}}
+
 Plug 'hail2u/vim-css3-syntax'
 
 Plug 'sgur/vim-editorconfig'
@@ -91,7 +99,7 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'airblade/vim-gitgutter'
 
-Plug 'pangloss/vim-javascript' "{{{
+Plug 'pangloss/vim-javascript' " {{{
   " Highlight JSdocs
   let g:javascript_plugin_jsdoc = 1
   " Syntax highlighting for flow.js
