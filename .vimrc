@@ -2,7 +2,6 @@
 " Vimrc - Joseph Rex <joseph@strich.io>
 "
 
-
 " Vim compatibility over vi
 set nocompatible
 
@@ -35,15 +34,82 @@ endif
 " Begin plugs {{{
 call  plug#begin('~/.vim/plugged')
 
-Plug 'vim-airline/vim-airline'
+Plug 'mileszs/ack.vim' " {{{
+  " Use ag for :Ack searches
+  let g:ackprg = 'ag --nogroup --nocolor --column'
+" }}}
 
-Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline' " {{{
+  Plug 'vim-airline/vim-airline-themes'
+  " Rid off default mode indicator for vim-airline
+  set noshowmode
+  " Set airline_theme
+  let g:airline_theme='papercolor'
+  " Enable powerline font symbols
+  let g:airline_powerline_fonts = 1
+  if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
+  " Symbols {{{
+    " unicode symbols
+    let g:airline_left_sep = '»'
+    let g:airline_left_sep = '▶'
+    let g:airline_right_sep = '«'
+    let g:airline_right_sep = '◀'
+    let g:airline_symbols.linenr = '␊'
+    let g:airline_symbols.linenr = '␤'
+    let g:airline_symbols.linenr = '¶'
+    let g:airline_symbols.branch = '⎇'
+    let g:airline_symbols.paste = 'ρ'
+    let g:airline_symbols.paste = 'Þ'
+    let g:airline_symbols.paste = '∥'
+    let g:airline_symbols.whitespace = 'Ξ'
+    " airline symbols
+    let g:airline_left_sep = ''
+    let g:airline_left_alt_sep = ''
+    let g:airline_right_sep = ''
+    let g:airline_right_alt_sep = ''
+    let g:airline_symbols.branch = ''
+    let g:airline_symbols.readonly = ''
+    let g:airline_symbols.linenr = ''
+  " }}}
+" }}}
 
-Plug 'Valloric/YouCompleteMe'
+Plug 'mattn/emmet-vim'
+
+Plug 'vim-scripts/L9'
+
+Plug 'tomtom/tcomment_vim'
+
+Plug 'ternjs/tern_for_vim'
+
+Plug 'hail2u/vim-css3-syntax'
+
+Plug 'sgur/vim-editorconfig'
+
+Plug 'tpope/vim-fugitive'
+
+Plug 'airblade/vim-gitgutter'
+
+Plug 'pangloss/vim-javascript' "{{{
+  " Highlight JSdocs
+  let g:javascript_plugin_jsdoc = 1
+  " Syntax highlighting for flow.js
+  let g:javascript_plugin_flow = 1
+" }}}
+
+Plug 'mxw/vim-jsx'
 
 Plug 'posva/vim-vue'
 
-Plug 'vim-scripts/L9'
+Plug 'vim-syntastic/syntastic' " {{{
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 1
+  let g:syntastic_ignore_files = ['*node_modules*']
+  let g:syntastic_javascript_checkers = ['eslint']
+" }}}
+
+Plug 'Valloric/YouCompleteMe'
 
 call plug#end()
 " }}}
@@ -131,6 +197,12 @@ set title
   " Use tabs in gitconfig
   autocmd BufRead .gitconfig setlocal noexpandtab | %retab!
 
+  " Jump to last line edited
+  au BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+      \ | exe "normal! g`\""
+      \ | endif
+
 " }}}
 
 
@@ -154,56 +226,6 @@ set updatetime=250
 
 " A color scheme (More at vimcolors.com)
 colorscheme dzo
-
-" Rid off default mode indicator for vim-airline
-set noshowmode
-
-" Set airline_theme
-let g:airline_theme='papercolor'
-
-" Enable powerline font symbols
-let g:airline_powerline_fonts = 1
-
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-" Editorconfig compatibility with fugitive
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-
-" Use ag for :Ack searches
-let g:ackprg = 'ag --nogroup --nocolor --column'
-
-" Highlight JSdocs with vim-javascript
-let g:javascript_plugin_jsdoc = 1
-
-" Symbols {{{
-
-  " unicode symbols
-  let g:airline_left_sep = '»'
-  let g:airline_left_sep = '▶'
-  let g:airline_right_sep = '«'
-  let g:airline_right_sep = '◀'
-  let g:airline_symbols.linenr = '␊'
-  let g:airline_symbols.linenr = '␤'
-  let g:airline_symbols.linenr = '¶'
-  let g:airline_symbols.branch = '⎇'
-  let g:airline_symbols.paste = 'ρ'
-  let g:airline_symbols.paste = 'Þ'
-  let g:airline_symbols.paste = '∥'
-  let g:airline_symbols.whitespace = 'Ξ'
-
-  " airline symbols
-  let g:airline_left_sep = ''
-  let g:airline_left_alt_sep = ''
-  let g:airline_right_sep = ''
-  let g:airline_right_alt_sep = ''
-  let g:airline_symbols.branch = ''
-  let g:airline_symbols.readonly = ''
-  let g:airline_symbols.linenr = ''
-
-" }}}
-
 
 " Netrw config {{{
 
@@ -239,6 +261,7 @@ let g:javascript_plugin_jsdoc = 1
   " Fast editing and sourcing of `.vimrc`
   nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
   nnoremap <Leader>sv :source $MYVIMRC<CR>
+  nnoremap <Leader>rs :source %<CR>
 
   " Close active window
   nnoremap <Leader>x :q<CR>
@@ -247,8 +270,8 @@ let g:javascript_plugin_jsdoc = 1
   nnoremap <esc> :noh<return><esc>
   nnoremap <Tab>2 :set tabstop=2<CR>
   nnoremap <Tab>4 :set tabstop=4<CR>
-  " Toggle indentLine plugin on/off
-  nnoremap <Leader>i :IndentLinesToggle<CR>
+  " Plug install
+  nnoremap <Leader>i :PlugInstall<CR>
   " Toggle pasting mode
   nnoremap <Leader>p :set paste!<CR>
   " Toggle light/dark backgrounds
