@@ -24,10 +24,6 @@ function! HasPaste() " Redundant but I'm still keeping
   return ''
 endfunction
 
-" Execute pathogen plugin mgt.
-execute pathogen#infect()
-
-
 " Run time path appends {{{
 
   " set runtime path to include fuzzyfinder
@@ -44,6 +40,10 @@ filetype off
 
 " Vundle plugin begins
 call vundle#begin()
+
+Plugin 'vim-airline/vim-airline'
+
+Plugin 'vim-airline/vim-airline-themes'
 
 Plugin 'Valloric/YouCompleteMe'
 
