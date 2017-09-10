@@ -121,6 +121,7 @@ Plug 'sirver/UltiSnips' " {{{
   " Add default snippets
   Plug 'honza/vim-snippets'
   let g:UltiSnipsEditSplit = 'vertical'
+  let g:UltiSnipsSnippetsDir = '~/.vim/personalized/UltiSnips'
   let g:UltiSnipsExpandTrigger = '<tab>'
   let g:UltiSnipsJumpForwardTrigger = '<tab>'
   let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
@@ -294,6 +295,8 @@ colorscheme dzo
   nnoremap <Leader>i :PlugInstall<CR>
   " Plug Clean
   nnoremap <Leader>un :PlugClean<CR>
+  " UltiSnips Edit
+  nnoremap <Leader>ue :UltiSnipsEdit<CR>
   " Toggle pasting mode
   nnoremap <Leader>p :set paste!<CR>
   " Toggle light/dark backgrounds
