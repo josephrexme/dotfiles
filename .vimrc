@@ -85,8 +85,6 @@ Plug 'vim-scripts/L9'
 
 Plug 'tomtom/tcomment_vim'
 
-Plug 'ternjs/tern_for_vim'
-
 Plug 'hail2u/vim-css3-syntax'
 
 Plug 'sgur/vim-editorconfig'
