@@ -19,3 +19,6 @@ test -f ~/.bash_aliases && source ~/.bash_aliases
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# added by travis gem
+[ -f /Users/silverdust/.travis/travis.sh ] && source /Users/silverdust/.travis/travis.sh

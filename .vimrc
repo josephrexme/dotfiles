@@ -120,6 +120,7 @@ Plug 'sirver/UltiSnips' " {{{
   Plug 'honza/vim-snippets'
   let g:UltiSnipsEditSplit = 'vertical'
   let g:UltiSnipsSnippetsDir = '~/.vim/personalized/UltiSnips'
+  let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'personalized/UltiSnips']
   let g:UltiSnipsExpandTrigger = '<tab>'
   let g:UltiSnipsJumpForwardTrigger = '<tab>'
   let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
@@ -310,6 +311,8 @@ colorscheme dzo
   nnoremap gb :bn<CR>
   " `gB` switches to previous buffer, like `gT` does with tabs
   nnoremap gB :bp<CR>
+  " mocha Test
+  nnoremap mT :!mocha %<CR>
   " Toggle invisible tabs and trails
   nnoremap <Leader>in :set list!<CR>
   " Highlight all

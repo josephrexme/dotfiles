@@ -109,3 +109,6 @@ export NVM_DIR="/Users/silverdust/.nvm"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# added by travis gem
+[ -f /Users/silverdust/.travis/travis.sh ] && source /Users/silverdust/.travis/travis.sh
