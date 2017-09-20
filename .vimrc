@@ -111,6 +111,8 @@ Plug 'vim-syntastic/syntastic' " {{{
   let g:syntastic_javascript_checkers = ['eslint']
 " }}}
 
+Plug 'scrooloose/nerdtree'
+
 Plug 'ervandew/supertab' " {{{
   let g:SuperTabDefaultCompletionType = '<C-n>'
 " }}}
