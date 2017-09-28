@@ -77,6 +77,8 @@ alias ctags="$(brew --prefix)/bin/ctags"
 alias git=hub
 alias glone='git clone'
 alias be='bundle exec'
+alias dotfileson='defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder'
+alias dotfilesoff='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'
 
 # Functions
 
