@@ -138,8 +138,6 @@ call plug#end()
 
 " Determine filetype to add indent and enable plugins
 filetype plugin indent on
-filetype plugin on
-filetype indent on
 
 " Fix backspace indent
 set backspace=indent,eol,start
@@ -287,6 +285,9 @@ colorscheme dzo
 
   " Close active window
   nnoremap <Leader>x :q<CR>
+
+  " Close current buffer
+  nnoremap <Leader>s :bd<CR>
 
   " Map no highlight to <esc> key
   nnoremap <esc> :noh<return><esc>
