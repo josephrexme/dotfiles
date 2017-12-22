@@ -182,6 +182,9 @@ set ruler
 " Show file title in terminal
 set title
 
+" Highlight current row
+set cursorline
+
 
 " Searching {{{
 
