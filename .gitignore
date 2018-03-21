@@ -12,6 +12,8 @@
 !.hyper.js
 !.iterm2
 !.iterm2_shell_integration.zsh
+!minions.key
+!minions.kdbx
 !.tern-config
 !.tmux.conf
 !.vimrc
