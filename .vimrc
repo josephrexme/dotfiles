@@ -128,6 +128,8 @@ Plug 'sirver/UltiSnips' " {{{
   let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 " }}}
 
+Plug 'terryma/vim-multiple-cursors'
+
 call plug#end()
 " }}}
 
@@ -312,8 +314,10 @@ colorscheme dzo
   nnoremap gb :bn<CR>
   " `gB` switches to previous buffer, like `gT` does with tabs
   nnoremap gB :bp<CR>
-  " mocha Test
+  " mocha Test current file only
   nnoremap mT :!mocha %<CR>
+  " run tests in node: npm test
+  nnoremap rT :!npm test<CR>
   " Toggle invisible tabs and trails
   nnoremap <Leader>in :set list!<CR>
   " Highlight all
