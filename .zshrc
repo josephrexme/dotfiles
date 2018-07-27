@@ -1,8 +1,8 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=~/Library/Python/2.7/bin:bin:node_modules/.bin:$HOME/bin:$HOME/Library/Haskell/bin:$PATH
+export PATH=bin:node_modules/.bin:$HOME/bin:$HOME/Library/Haskell/bin:/usr/local/mysql/bin:~/Library/Python/2.7/bin:$HOME/.composer/vendor/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/silverdust/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -105,7 +105,7 @@ hub() {
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # NVM setup
-export NVM_DIR="/Users/silverdust/.nvm"
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -113,4 +113,4 @@ export NVM_DIR="/Users/silverdust/.nvm"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # added by travis gem
-[ -f /Users/silverdust/.travis/travis.sh ] && source /Users/silverdust/.travis/travis.sh
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
