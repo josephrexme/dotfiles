@@ -16,7 +16,6 @@
 !minions.kdbx
 !.tern-config
 !.tmux.conf
-!.tmux
 !.vimrc
 !.zshrc
 **/.DS_Store
