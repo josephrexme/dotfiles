@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=bin:node_modules/.bin:$HOME/bin:$HOME/Library/Haskell/bin:/usr/local/mysql/bin:~/Library/Python/2.7/bin:$HOME/.composer/vendor/bin:$PATH
+export PATH=bin:node_modules/.bin:$HOME/bin:/usr/local/opt/gettext/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh

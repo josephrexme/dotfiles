@@ -245,7 +245,7 @@ set noerrorbells
 set updatetime=250
 
 " A color scheme (More at vimcolors.com)
-colorscheme dzo
+colorscheme blame
 
 " Netrw config {{{
 
