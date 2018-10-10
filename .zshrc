@@ -120,3 +120,5 @@ export NVM_DIR="$HOME/.nvm"
 
 # Autojump
 [ -f $(brew --prefix)/etc/profile.d/autojump.sh ] && . $(brew --prefix)/etc/profile.d/autojump.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
