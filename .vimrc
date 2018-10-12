@@ -290,7 +290,7 @@ colorscheme tokyo-metro
   nnoremap <Leader>s :bd<CR>
 
   " Map no highlight to <esc> key
-  " nnoremap <esc> :noh<return><esc>
+  nnoremap <BS> :noh<return><esc>
   nnoremap <Tab>2 :set tabstop=2<CR>
   nnoremap <Tab>4 :set tabstop=4<CR>
   " Plug install
