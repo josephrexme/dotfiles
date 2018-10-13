@@ -245,7 +245,7 @@ set noerrorbells
 set updatetime=250
 
 " A color scheme (More at vimcolors.com)
-colorscheme tokyo-metro
+colorscheme dzo
 
 " Netrw config {{{
 
