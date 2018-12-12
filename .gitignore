@@ -18,4 +18,5 @@
 !.tmux.conf
 !.vimrc
 !.zshrc
+!.zpreztorc
 **/.DS_Store
