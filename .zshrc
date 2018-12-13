@@ -41,20 +41,20 @@ alias dotfilesoff='defaults write com.apple.finder AppleShowAllFiles FALSE && ki
 # Functions
 
 # Override hub to cd into folders after cloning
-# hub() {
-#   local tmp=$(mktemp)
-#   local repo_name
-#
-#   if [ "$1" = clone ] ; then
-#     $(brew --prefix)/bin/hub "$@" 2>&1 | tee $tmp
-#     repo_name=$(awk -F"[ ']+" '/Cloning into/ {print $3}' $tmp)
-#     rm $tmp
-#     printf "Changing to directory %s\n" "$repo_name"
-#     cd "$repo_name"
-#   else
-#     $(brew --prefix)/bin/hub "$@"
-#   fi
-# }
+hub() {
+  local tmp=$(mktemp)
+  local repo_name
+
+  if [ "$1" = clone ] ; then
+    $(brew --prefix)/bin/hub "$@" 2>&1 | tee $tmp
+    repo_name=$(awk -F"[ ']+" '/Cloning into/ {print $3}' $tmp)
+    rm $tmp
+    printf "Changing to directory %s\n" "$repo_name"
+    cd "$repo_name"
+  else
+    $(brew --prefix)/bin/hub "$@"
+  fi
+}
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
