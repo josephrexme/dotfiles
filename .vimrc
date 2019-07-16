@@ -102,6 +102,8 @@ Plug 'pangloss/vim-javascript' " {{{
 
 Plug 'mxw/vim-jsx'
 
+Plug 'leafgarland/typescript-vim'
+
 Plug 'posva/vim-vue'
 
 Plug 'vim-syntastic/syntastic' " {{{
