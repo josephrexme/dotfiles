@@ -58,6 +58,17 @@ hub() {
   fi
 }
 
+# Use local npm.sh when available through npm command
+npm() {
+  if [ -f npm.sh ] ; then
+    echo "Using local npm.sh"
+    ./npm.sh "$@"
+  else
+    echo "Using npm on system PATH"
+    $(which node)/../npm "$@"
+  fi
+}
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
