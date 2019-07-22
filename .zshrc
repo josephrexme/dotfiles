@@ -7,7 +7,9 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 export PATH=bin:node_modules/.bin:$HOME/bin:/usr/local/bin:/usr/local/apache-maven-3.3.9/bin:/usr/local/mysql/bin:$HOME/.jenv/bin:$PATH
-eval "$(jenv init -)"
+if type "$jenv" > /dev/null; then
+  eval "$(jenv init -)"
+fi
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
