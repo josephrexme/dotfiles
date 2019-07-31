@@ -81,6 +81,8 @@ Plug 'vim-airline/vim-airline' " {{{
 
 Plug 'mattn/emmet-vim'
 
+Plug 'vim-scripts/svg.vim'
+
 Plug 'vim-scripts/L9'
 
 Plug 'tomtom/tcomment_vim'
