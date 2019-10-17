@@ -6,7 +6,7 @@ fi
 # User configuration
 
 # If you come from bash you might have to change your $PATH.
-export PATH=bin:node_modules/.bin:$HOME/bin:/usr/local/bin:/usr/local/apache-maven-3.3.9/bin:/usr/local/mysql/bin:$HOME/.jenv/bin:$PATH
+export PATH=bin:node_modules/.bin:$HOME/bin:$HOME/.cargo/bin:$PATH:/usr/local/bin:/usr/local/apache-maven-3.3.9/bin:/usr/local/mysql/bin:$HOME/.jenv/bin:$PATH
 if type "$jenv" > /dev/null; then
   eval "$(jenv init -)"
 fi
