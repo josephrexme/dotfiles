@@ -121,17 +121,6 @@ Plug 'ervandew/supertab' " {{{
   let g:SuperTabDefaultCompletionType = '<C-n>'
 " }}}
 
-Plug 'sirver/UltiSnips' " {{{
-  " Add default snippets
-  Plug 'honza/vim-snippets'
-  let g:UltiSnipsEditSplit = 'vertical'
-  let g:UltiSnipsSnippetsDir = '~/.vim/personalized/UltiSnips'
-  let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'personalized/UltiSnips']
-  let g:UltiSnipsExpandTrigger = '<tab>'
-  let g:UltiSnipsJumpForwardTrigger = '<tab>'
-  let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-" }}}
-
 Plug 'terryma/vim-multiple-cursors'
 
 call plug#end()
