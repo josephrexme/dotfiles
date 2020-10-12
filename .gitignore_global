@@ -1,5 +1,10 @@
 .DS_Store
 .sass-cache
+*.code-workspace
 *.sw[nop]
 node_modules
+.vscode
 tags
+jsconfig.json
+*.drawio*
+*.dio
