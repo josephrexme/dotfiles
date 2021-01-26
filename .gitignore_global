@@ -8,3 +8,4 @@ tags
 jsconfig.json
 *.drawio*
 *.dio
+.nvmrc
