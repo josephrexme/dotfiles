@@ -8,4 +8,4 @@ tmux new-session \; \
   send-keys 'j convertkit && ./bin/docker-dependencies' C-m \; \
   select-pane -t 0 \; \
   split-window -v -p 50 \; \
-  send-keys 'j convertkit && rails s' C-m \; \
+  send-keys '(sleep 40 && j convertkit && rails s)' C-m \; \
