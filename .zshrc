@@ -38,12 +38,12 @@ export FZF_DEFAULT_OPTS="--reverse --inline-info"
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Aliases
-alias ls='ls -GFh'
+alias ls='ls -GFh | lolcat'
 alias deploy='./deploy.sh'
 alias publish='./publish.sh'
 alias ctags="$(brew --prefix)/bin/ctags"
 alias git=hub
-alias gsb='git status --short'
+alias gsb='git status --short | lolcat'
 alias gmn='git checkout main'
 alias ga='git add'
 alias gz='git checkout'
@@ -51,11 +51,15 @@ alias gd='git diff'
 alias be='bundle exec'
 alias rails='be rails'
 alias rspec='be rspec -fd --force-color'
+alias sidekiq='be sidekiq'
 alias jest='./node_modules/.bin/jest'
-alias vivaldi='/Applications/Vivaldi.app/Contents/MacOS/Vivaldi'
 alias wds='webpack-dev-server'
+alias cktmux='~/ck-tmux.sh'
+alias ckjobs='sidekiq -i 1 -q all'
+alias ckdev='yarn | lolcat && yarn build:server | lolcat && yarn webpack-dev-server'
 alias dotfileson='defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder'
 alias dotfilesoff='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'
+alias stackhawk-audit='docker run -e API_KEY=${HAWK_API_KEY} --rm -v $(pwd):/hawk:rw -it stackhawk/hawkscan:latest'
 
 # Functions
 
@@ -73,6 +77,15 @@ hub() {
   else
     $(brew --prefix)/bin/hub "$@"
   fi
+}
+
+# Base64 encode and decode
+base64encode() {
+  echo "$1" | base64
+}
+
+base64decode() {
+  echo "$1" | base64 --decode
 }
 
 export NVM_DIR="$HOME/.nvm"
