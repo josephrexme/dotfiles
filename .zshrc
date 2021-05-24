@@ -38,7 +38,7 @@ export FZF_DEFAULT_OPTS="--reverse --inline-info"
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Aliases
-alias ls='ls -GFh | lolcat'
+alias ls='ls -GFh'
 alias deploy='./deploy.sh'
 alias publish='./publish.sh'
 alias ctags="$(brew --prefix)/bin/ctags"
