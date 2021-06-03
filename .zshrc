@@ -5,8 +5,6 @@ fi
 
 # User configuration
 
-# If you come from bash you might have to change your $PATH.
-export PATH=bin:node_modules/.bin:$HOME/bin:$HOME/.bin:$HOME/.cargo/bin:$PATH:/usr/local/bin:/usr/local/apache-maven-3.3.9/bin:/usr/local/mysql/bin:$HOME/.jenv/bin:$PATH
 if type "$jenv" > /dev/null; then
   eval "$(jenv init -)"
 fi
@@ -14,28 +12,6 @@ fi
 # Rbenv for Ruby
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor
-export EDITOR='vim'
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-export LDFLAGS="-L/usr/local/opt/readline/lib"
-export CPPFLAGS="-I/usr/local/opt/readline/include"
-export PKG_CONFIG_PATH="/usr/local/opt/readline/lib/pkgconfig"
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
-export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig"
-
-# FZF config
-export FZF_DEFAULT_COMMAND='ag -g ""'
-export FZF_DEFAULT_OPTS="--reverse --inline-info"
-
-# ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Aliases
 alias ls='ls -GFh'
@@ -60,6 +36,7 @@ alias ckdev='yarn | lolcat && yarn build:server | lolcat && yarn webpack-dev-ser
 alias dotfileson='defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder'
 alias dotfilesoff='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'
 alias stackhawk-audit='docker run -e API_KEY=${HAWK_API_KEY} --rm -v $(pwd):/hawk:rw -it stackhawk/hawkscan:latest'
+
 
 # Functions
 
@@ -92,7 +69,37 @@ base64decode() {
 [ -f $(brew --prefix)/etc/profile.d/autojump.sh ] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+# ENV Variables
+
+export PATH=bin:node_modules/.bin:$HOME/bin:$HOME/.bin:$HOME/.cargo/bin:$PATH:/usr/local/bin:/usr/local/apache-maven-3.3.9/bin:/usr/local/mysql/bin:$HOME/.jenv/bin:$PATH
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor
+export EDITOR='vim'
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+export LDFLAGS="-L/usr/local/opt/readline/lib"
+export CPPFLAGS="-I/usr/local/opt/readline/include"
+export PKG_CONFIG_PATH="/usr/local/opt/readline/lib/pkgconfig"
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig"
+
+# FZF config
+export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_OPTS="--reverse --inline-info"
+
+# ssh
+export SSH_KEY_PATH="~/.ssh/rsa_id"
 export FLASK_APP=blackjack
 export FLASK_ENV=development
+export CK_PATH="$HOME/Projects/ConvertKit/convertkit"
+export FILEKIT_PATH="$HOME/Projects/ConvertKit/filekit"
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
