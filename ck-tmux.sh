@@ -2,7 +2,10 @@ if [ "$TERM_PROGRAM" = tmux ]; then
   echo "Exiting ck tmux session"
   # Stop rails servers (ck and fk) and put down docker
   cat $CK_PATH/tmp/pids/server.pid | xargs -n1 -I pid kill -9 pid
-  cat $FIELKIT_PATH/tmp/pids/server.pid | xargs -n1 -I pid kill -9 pid
+  cat $FILEKIT_PATH/tmp/pids/server.pid | xargs -n1 -I pid kill -9 pid
+  # Stop functions JS server
+  kill $(lsof -wni tcp:3031 | awk 'NR == 2 {print $2}')
+  # Put down docker
   docker-compose --file $CK_PATH/dev/docker-compose-dependencies.yml down
   tmux kill-session
 else
