@@ -10,7 +10,6 @@
 !.gitignore_global
 !.hammerspoon
 !.hyper.js
-!.irssi
 !.iterm2
 !.iterm2_shell_integration.zsh
 !minions.key

@@ -35,6 +35,8 @@ alias ckjobs='sidekiq -i 1 -q all'
 alias ckdev='yarn | lolcat && yarn build:server | lolcat && yarn webpack-dev-server'
 alias dotfileson='defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder'
 alias dotfilesoff='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'
+alias pressholdon='defaults write -g ApplePressAndHoldEnabled -bool true'
+alias pressholdoff='defaults write -g ApplePressAndHoldEnabled -bool false'
 alias stackhawk-audit='docker run -e API_KEY=${HAWK_API_KEY} --rm -v $(pwd):/hawk:rw -it stackhawk/hawkscan:latest'
 
 
@@ -65,6 +67,18 @@ base64decode() {
   echo "$1" | base64 --decode
 }
 
+# Delete branches with a match
+gbdall() {
+  echo "Deleting all branches that match $1"
+  git branch | grep "$1" | xargs git branch -D
+}
+
+# Checkout remote branch
+gitpeep() {
+  echo "Peeping remote branch - $1"
+  git fetch && git checkout origin/$1
+}
+
 # Autojump
 [ -f $(brew --prefix)/etc/profile.d/autojump.sh ] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
@@ -73,7 +87,7 @@ base64decode() {
 
 # ENV Variables
 
-export PATH=bin:node_modules/.bin:$HOME/bin:$HOME/.bin:$HOME/.cargo/bin:$PATH:/usr/local/bin:/usr/local/apache-maven-3.3.9/bin:/usr/local/mysql/bin:$HOME/.jenv/bin:$PATH
+export PATH=bin:node_modules/.bin:$HOME/bin:$HOME/.bin:$HOME/.cargo/bin:$PATH:/usr/local/bin:/usr/local/apache-maven-3.3.9/bin:/usr/local/mysql/bin:$HOME/.jenv/bin:$HOME/Library/Python/3.8/bin:$PATH
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
