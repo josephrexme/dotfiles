@@ -6,6 +6,13 @@ apt-get install -y \
   htop \
   curl
 
+# Install prezto
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+
+# Change to zsh
+chsh -s /bin/zsh
+zsh
+
 # Install homebrew because zsh configs use a lot of brew --prefix
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /root/.profile
