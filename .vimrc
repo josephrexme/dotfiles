@@ -237,8 +237,10 @@ set noerrorbells
 " Reducing updattetime from default 4s for vim-gitgutter
 set updatetime=250
 
-" A color scheme (More at vimcolors.com)
-colorscheme dzo
+" Set color scheme if exists (More at vimcolorschemes.com)
+if !empty(glob("~/.vim/colors/dzo.vim"))
+  colorscheme dzo
+endif
 
 " Netrw config {{{
 

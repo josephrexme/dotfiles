@@ -1,25 +1,18 @@
 # Ignore everything
 /*
 !.ackrc
-!.bash_aliases
-!.bash_profile
-!.bashrc
 !.ctags
 !.gitconfig
 !.gitignore
 !.gitignore_global
-!.hammerspoon
-!.hyper.js
 !.iterm2
 !.iterm2_shell_integration.zsh
-!minions.key
-!minions.kdbx
 !.slate
 !.tern-config
 !.tmux.conf
 !.vimrc
 !.zshrc
 !.zprezto
-!.zpreztorc
 !ck-tmux.sh
+!script
 **/.DS_Store
