@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Install necessities
 apt-get update
 apt-get install -y \
