@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo "Begin setting up Joseph's environment"
+
 # Install necessities
 apt-get update
 
@@ -10,8 +12,10 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y \
   htop \
   curl
 
-# Install homebrew because zsh configs use a lot of brew --prefix
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# Install homebrew because it's easier to control than apt
+# The echo | is to send a single return via STDIN when installation
+# prompts
+echo | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /root/.profile
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
@@ -29,7 +33,7 @@ brew install lolcat
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
 # Change to zsh
-chsh -s /bin/zsh
+# chsh -s "$(which zsh)" <- Getting PAM auth failure on this
 zsh
 
 
