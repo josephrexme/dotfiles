@@ -2,7 +2,9 @@
 
 # Install necessities
 apt-get update
-apt-get install -y \
+
+## Prevent interactive questions from apt/dpkg
+DEBIAN_FRONTEND=noninteractive apt-get install -y \
   zsh \
   vim \
   git \
