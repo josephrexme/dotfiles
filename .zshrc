@@ -7,31 +7,6 @@ fi
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 
-# Aliases
-alias ls='ls -GFh'
-alias deploy='./deploy.sh'
-alias publish='./publish.sh'
-alias ctags="$(brew_prefix)/bin/ctags"
-alias gsb='git status --short'
-alias gmn='git checkout main'
-alias ga='git add'
-alias gz='git checkout'
-alias gd='git diff'
-alias be='bundle exec'
-alias rails='be rails'
-alias rspec='be rspec -fd --force-color'
-alias sidekiq='be sidekiq'
-alias jest='./node_modules/.bin/jest'
-alias wds='webpack-dev-server'
-alias cktmux='~/ck-tmux.sh'
-alias ckjobs='sidekiq -i 1 -q all'
-alias ckdev='yarn | yarn build:server | yarn webpack-dev-server'
-alias dotfileson='defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder'
-alias dotfilesoff='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'
-alias pressholdon='defaults write -g ApplePressAndHoldEnabled -bool true'
-alias pressholdoff='defaults write -g ApplePressAndHoldEnabled -bool false'
-
-
 # Functions
 brew_prefix() {
   if which brew > /dev/null ; then
@@ -71,6 +46,31 @@ gbdall() {
   echo "Deleting all branches that match $1"
   git branch | grep "$1" | xargs git branch -D
 }
+
+
+# Aliases
+alias ls='ls -GFh'
+alias deploy='./deploy.sh'
+alias publish='./publish.sh'
+alias ctags="$(brew_prefix)/bin/ctags"
+alias gsb='git status --short'
+alias gmn='git checkout main'
+alias ga='git add'
+alias gz='git checkout'
+alias gd='git diff'
+alias be='bundle exec'
+alias rails='be rails'
+alias rspec='be rspec -fd --force-color'
+alias sidekiq='be sidekiq'
+alias jest='./node_modules/.bin/jest'
+alias wds='webpack-dev-server'
+alias cktmux='~/ck-tmux.sh'
+alias ckjobs='sidekiq -i 1 -q all'
+alias ckdev='yarn | yarn build:server | yarn webpack-dev-server'
+alias dotfileson='defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder'
+alias dotfilesoff='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'
+alias pressholdon='defaults write -g ApplePressAndHoldEnabled -bool true'
+alias pressholdoff='defaults write -g ApplePressAndHoldEnabled -bool false'
 
 # Autojump
 [ -f $(brew_prefix)/etc/profile.d/autojump.sh ] && . $(brew_prefix)/etc/profile.d/autojump.sh
