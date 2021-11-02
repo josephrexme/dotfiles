@@ -2,6 +2,8 @@
 [alias]
 	praise = blame
 	today = log --since=00:00:00 --all --no-merges --oneline --author=joerexko@gmail.com
+	peep = "!git fetch && git checkout origin/$1 #"
+	download = "!hub clone $1 #"
 [color]
 	branch = auto
 	diff = auto

@@ -3,12 +3,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# User configuration
-
-if type "$jenv" > /dev/null; then
-  eval "$(jenv init -)"
-fi
-
 # Rbenv for Ruby
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
@@ -17,9 +11,8 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 alias ls='ls -GFh'
 alias deploy='./deploy.sh'
 alias publish='./publish.sh'
-alias ctags="$(brew --prefix)/bin/ctags"
-alias git=hub
-alias gsb='git status --short | lolcat'
+alias ctags="$(brew_prefix)/bin/ctags"
+alias gsb='git status --short'
 alias gmn='git checkout main'
 alias ga='git add'
 alias gz='git checkout'
@@ -32,15 +25,21 @@ alias jest='./node_modules/.bin/jest'
 alias wds='webpack-dev-server'
 alias cktmux='~/ck-tmux.sh'
 alias ckjobs='sidekiq -i 1 -q all'
-alias ckdev='yarn | lolcat && yarn build:server | lolcat && yarn webpack-dev-server'
+alias ckdev='yarn | yarn build:server | yarn webpack-dev-server'
 alias dotfileson='defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder'
 alias dotfilesoff='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'
 alias pressholdon='defaults write -g ApplePressAndHoldEnabled -bool true'
 alias pressholdoff='defaults write -g ApplePressAndHoldEnabled -bool false'
-alias stackhawk-audit='docker run -e API_KEY=${HAWK_API_KEY} --rm -v $(pwd):/hawk:rw -it stackhawk/hawkscan:latest'
 
 
 # Functions
+brew_prefix() {
+  if which brew > /dev/null ; then
+    echo "$(brew --prefix)"
+  else
+    echo ""
+  fi
+}
 
 # Override hub to cd into folders after cloning
 hub() {
@@ -48,13 +47,13 @@ hub() {
   local repo_name
 
   if [ "$1" = clone ] ; then
-    $(brew --prefix)/bin/hub "$@" 2>&1 | tee $tmp
+    $(brew_prefix)/bin/hub "$@" 2>&1 | tee $tmp
     repo_name=$(awk -F"[ ']+" '/Cloning into/ {print $3}' $tmp)
-    rm $tmp
+    rm -f $tmp
     printf "Changing to directory %s\n" "$repo_name"
     cd "$repo_name"
   else
-    $(brew --prefix)/bin/hub "$@"
+    $(brew_prefix)/bin/hub "$@"
   fi
 }
 
@@ -73,14 +72,8 @@ gbdall() {
   git branch | grep "$1" | xargs git branch -D
 }
 
-# Checkout remote branch
-gitpeep() {
-  echo "Peeping remote branch - $1"
-  git fetch && git checkout origin/$1
-}
-
 # Autojump
-[ -f $(brew --prefix)/etc/profile.d/autojump.sh ] && . $(brew --prefix)/etc/profile.d/autojump.sh
+[ -f $(brew_prefix)/etc/profile.d/autojump.sh ] && . $(brew_prefix)/etc/profile.d/autojump.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -102,7 +95,7 @@ export EDITOR='vim'
 export LDFLAGS="-L/usr/local/opt/readline/lib"
 export CPPFLAGS="-I/usr/local/opt/readline/include"
 export PKG_CONFIG_PATH="/usr/local/opt/readline/lib/pkgconfig"
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew_prefix openssl@1.1)"
 export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig"
 
 # FZF config
