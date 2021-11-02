@@ -3,7 +3,14 @@
 echo "Begin setting up Joseph's environment"
 
 # Copy over dotfiles
-./copy.sh
+echo "Copying over dotfiles"
+pwd
+ls -a .
+ls -a ../
+cp ../.zshrc ${HOME}
+cp ../.vimrc ${HOME}
+cp ../.gitignore_global ${HOME}
+cp ../.tmux.conf ${HOME}
 
 # Install necessities
 apt update
