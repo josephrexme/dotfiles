@@ -9,3 +9,4 @@ jsconfig.json
 *.drawio*
 *.dio
 .nvmrc
+junit.xml
