@@ -55,6 +55,7 @@ alias publish='./publish.sh'
 alias ctags="$(brew_prefix)/bin/ctags"
 alias gsb='git status --short'
 alias gmn='git checkout main'
+alias gpo='git pull origin main'
 alias ga='git add'
 alias gz='git checkout'
 alias gd='git diff'
@@ -71,6 +72,8 @@ alias dotfileson='defaults write com.apple.finder AppleShowAllFiles TRUE && kill
 alias dotfilesoff='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'
 alias pressholdon='defaults write -g ApplePressAndHoldEnabled -bool true'
 alias pressholdoff='defaults write -g ApplePressAndHoldEnabled -bool false'
+alias inspectappson='defaults write -g WebKitDeveloperExtras -bool YES'
+alias inspectappsoff='defaults write -g WebKitDeveloperExtras -bool NO'
 
 # Autojump
 [ -f $(brew_prefix)/etc/profile.d/autojump.sh ] && . $(brew_prefix)/etc/profile.d/autojump.sh
