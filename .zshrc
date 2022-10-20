@@ -68,6 +68,7 @@ alias wds='webpack-dev-server'
 alias cktmux='~/ck-tmux.sh'
 alias ckjobs='sidekiq -i 1 -q all'
 alias ckdev='yarn | yarn build:server | yarn webpack-dev-server'
+alias kill_filekit='cat $FILEKIT_PATH/tmp/pids/server.pid | xargs -n1 -I pid kill -9 pid'
 alias dotfileson='defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder'
 alias dotfilesoff='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'
 alias pressholdon='defaults write -g ApplePressAndHoldEnabled -bool true'
@@ -83,8 +84,9 @@ alias inspectappsoff='defaults write -g WebKitDeveloperExtras -bool NO'
 
 # ENV Variables
 
-export PATH=bin:node_modules/.bin:$HOME/bin:$HOME/.bin:$HOME/.cargo/bin:$PATH:/usr/local/bin:/usr/local/apache-maven-3.3.9/bin:/usr/local/mysql/bin:$HOME/.jenv/bin:$HOME/Library/Python/3.8/bin:$PATH
+export PATH=$(pyenv root)/shims:bin:node_modules/.bin:$HOME/bin:$HOME/.bin:$HOME/.cargo/bin:$PATH:/usr/local/bin:/usr/local/apache-maven-3.3.9/bin:/usr/local/mysql/bin:$HOME/.jenv/bin:$HOME/Library/Python/3.8/bin:$PATH
 
+export PYTHON="$(which python)"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
