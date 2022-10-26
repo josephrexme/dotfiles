@@ -6,6 +6,11 @@ fi
 # Rbenv for Ruby
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
+# Source ConvertKit
+if [ -f .ckrc ]; then
+  source .ckrc
+fi
+
 
 # Functions
 brew_prefix() {
@@ -65,10 +70,6 @@ alias rspec='be rspec -fd --force-color'
 alias sidekiq='be sidekiq'
 alias jest='./node_modules/.bin/jest'
 alias wds='webpack-dev-server'
-alias cktmux='~/ck-tmux.sh'
-alias ckjobs='sidekiq -i 1 -q all'
-alias ckdev='yarn | yarn build:server | yarn webpack-dev-server'
-alias kill_filekit='cat $FILEKIT_PATH/tmp/pids/server.pid | xargs -n1 -I pid kill -9 pid'
 alias dotfileson='defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder'
 alias dotfilesoff='defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder'
 alias pressholdon='defaults write -g ApplePressAndHoldEnabled -bool true'
@@ -111,7 +112,5 @@ export FZF_DEFAULT_OPTS="--reverse --inline-info"
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 export FLASK_APP=blackjack
 export FLASK_ENV=development
-export CK_PATH="$HOME/Projects/ConvertKit/convertkit"
-export FILEKIT_PATH="$HOME/Projects/ConvertKit/filekit"
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).

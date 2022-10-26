@@ -1,0 +1,23 @@
+#############################
+# ConvertKit Configurations #
+#############################
+
+
+# ALIASES
+alias cktmux='~/ck-tmux.sh'
+alias ckjobs='sidekiq -i 1 -q all'
+alias ckdev='yarn | yarn build:server | yarn webpack-dev-server'
+alias kill_filekit='cat $FILEKIT_PATH/tmp/pids/server.pid | xargs -n1 -I pid kill -9 pid'
+
+
+# ENV VARS
+export CK_PATH="$HOME/Projects/ConvertKit/convertkit"
+export FILEKIT_PATH="$HOME/Projects/ConvertKit/filekit"
+
+
+# COMMANDS
+
+## Set up an employee plan and upgrade user to it
+ck_upgrade_plan() {
+  echo 'p = Plan.create(stripe_id: "plan_FEKhLIpMh3Xb3m", name: "ConvertKit Employee", slug: "plan_FEKhLIpMh3Xb3m"); Account.first.update(plan_id: p.stripe_id)' | spring rails c
+}

@@ -12,6 +12,7 @@
 !.tmux.conf
 !.vimrc
 !.zshrc
+!.ckrc
 !ck-tmux.sh
 !script
 **/.DS_Store
