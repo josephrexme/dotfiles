@@ -4,9 +4,9 @@
 
 
 # ALIASES
+alias ckdev='yarn | yarn build:server | yarn webpack-dev-server'
 alias cktmux='~/ck-tmux.sh'
 alias ckjobs='sidekiq -i 1 -q all'
-alias ckdev='yarn | yarn build:server | yarn webpack-dev-server'
 alias kill_filekit='cat $FILEKIT_PATH/tmp/pids/server.pid | xargs -n1 -I pid kill -9 pid'
 
 
