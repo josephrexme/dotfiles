@@ -7,8 +7,8 @@ fi
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Source ConvertKit
-if [ -f .ckrc ]; then
-  source .ckrc
+if [ -f "${HOME}/.ckrc" ]; then
+  source "${HOME}/.ckrc"
 fi
 
 
