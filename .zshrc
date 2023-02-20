@@ -3,8 +3,8 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Rbenv for Ruby
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+# Frum for Ruby (initialize if available and don't err if not)
+if command -v "frum" > /dev/null 2>&1; then eval "$(frum init)"; fi
 
 # Source ConvertKit
 if [ -f "${HOME}/.ckrc" ]; then
@@ -85,7 +85,7 @@ alias inspectappsoff='defaults write -g WebKitDeveloperExtras -bool NO'
 
 # ENV Variables
 
-export PATH=$(pyenv root)/shims:bin:node_modules/.bin:$HOME/bin:$HOME/.bin:$HOME/.cargo/bin:$PATH:/usr/local/bin:/usr/local/apache-maven-3.3.9/bin:/usr/local/mysql/bin:$HOME/.jenv/bin:$HOME/Library/Python/3.8/bin:$PATH
+export PATH=bin:node_modules/.bin:$HOME/bin:$HOME/.bin:$HOME/.cargo/bin:/usr/local/bin:/usr/local/opt/openssl@1.1/bin:/usr/local/apache-maven-3.3.9/bin:/usr/local/mysql/bin:$HOME/.jenv/bin:$HOME/Library/Python/3.8/bin:/usr/local/opt/postgresql@13/bin:$PATH
 
 export PYTHON="$(which python)"
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -97,12 +97,11 @@ export PYTHON="$(which python)"
 export EDITOR='vim'
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-export LDFLAGS="-L/usr/local/opt/readline/lib"
-export CPPFLAGS="-I/usr/local/opt/readline/include"
-export PKG_CONFIG_PATH="/usr/local/opt/readline/lib/pkgconfig"
+export ARCHFLAGS="-arch x86_64"
+export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
+export PKG_CONFIG_PATH="/usr/local/opt/openssl@1.1/lib/pkgconfig"
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew_prefix openssl@1.1)"
-export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig"
 
 # FZF config
 export FZF_DEFAULT_COMMAND='ag -g ""'
@@ -110,7 +109,5 @@ export FZF_DEFAULT_OPTS="--reverse --inline-info"
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
-export FLASK_APP=blackjack
-export FLASK_ENV=development
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
