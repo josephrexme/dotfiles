@@ -21,3 +21,13 @@ export FILEKIT_PATH="$HOME/Projects/ConvertKit/filekit"
 ck_upgrade_plan() {
   echo 'p = Plan.find_or_create_by(stripe_id: "plan_FEKhLIpMh3Xb3m", name: "ConvertKit Employee", slug: "plan_FEKhLIpMh3Xb3m", amount: 0); Account.first.update(plan_id: p.stripe_id)' | spring rails c
 }
+
+ckghost() {
+  [[ "$1" == "-x" ]] && note="Running ghost migration on $2" || note="Running dry ghost migration on $1"
+  [[ "$1" == "-x" ]] && target="$2, execute" || target="$1"
+
+  echo "$note"
+
+  # Add needed ENV vars locally for take to find
+  env $(grep -v '^#' $HOME/.secret-env | xargs) rake "db:ghost[$target]"
+}
