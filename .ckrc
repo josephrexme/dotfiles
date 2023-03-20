@@ -28,6 +28,6 @@ ckghost() {
 
   echo "$note"
 
-  # Add needed ENV vars locally for take to find
+  # Add needed ENV vars locally for rake to find
   env $(grep -v '^#' $HOME/.secret-env | xargs) rake "db:ghost[$target]"
 }
