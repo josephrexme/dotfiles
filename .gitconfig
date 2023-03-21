@@ -1,7 +1,7 @@
 # Glogal git configuration file.
 [alias]
 	praise = blame
-	today = log --since=00:00:00 --all --no-merges --oneline --author=joerexko@gmail.com
+	today = log --since=00:00:00 --all --no-merges --oneline --author=joseph.rex.t@gmail.com
 	peep = "!git fetch && git checkout origin/$1 #"
 	download = "!hub clone $1 #"
 [color]
@@ -13,7 +13,7 @@
 	showbranch = auto
 [user]
 	name = Joseph Rex
-	email = joerexko@gmail.com
+	email = joseph.rex.t@gmail.com
 [core]
 	excludesfile = ~/.gitignore_global
 [difftool "sourcetree"]

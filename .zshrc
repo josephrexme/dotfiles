@@ -70,7 +70,6 @@ export FZF_DEFAULT_OPTS="--reverse --inline-info"
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-
 export PYTHON="$(which python)"
 # export MANPATH="/usr/local/man:$MANPATH"
 # You may need to manually set your language environment

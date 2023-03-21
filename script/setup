@@ -10,20 +10,24 @@ cp .gitconfig ${HOME}
 cp .gitignore_global ${HOME}
 cp .tmux.conf ${HOME}
 
-# Install necessities
-apt-get update
-
-## Prevent interactive questions from apt/dpkg
-# `echo |` sends a return to STDIN for prompts
-echo | DEBIAN_FRONTEND=noninteractive apt-get install -y \
-  zsh \
-  vim \
-  git \
-  tmux \
-  htop \
-  irssi \
-  curl \
-  gettext-base
+if [ "$(uname)" = 'Linux' ]; then
+  # Debian based systems
+  if [ "$(grep -Ei 'debian|buntu|mint|kali' /etc/*release)" ]; then
+    # Install necessities
+    apt-get update
+    ## Prevent interactive questions from apt/dpkg
+    # `echo |` sends a return to STDIN for prompts
+    echo | DEBIAN_FRONTEND=noninteractive apt-get install -y \
+      zsh \
+      vim \
+      git \
+      tmux \
+      htop \
+      irssi \
+      curl \
+      gettext-base
+  fi
+fi
 
 
 # Install prezto for zsh
