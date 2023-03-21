@@ -1,13 +1,11 @@
 # Ignore everything
 /*
 !.ackrc
-!.ctags
 !.gitconfig
 !.gitignore
 !.gitignore_global
 !.iterm2
 !.iterm2_shell_integration.zsh
-!.slate
 !.tern-config
 !.tmux.conf
 !.vimrc
