@@ -50,7 +50,7 @@ gbdall() {
 export PYENV_ROOT="$HOME/.pyenv"
 export N_PREFIX="$HOME/n"
 
-export PATH=bin:node_modules/.bin:$HOME/bin:$HOME/.cargo/bin:$N_PREFIX/bin:$PYENV_ROOT/bin:/usr/local/bin:/usr/local/opt/openssl@1.1/bin:/usr/local/apache-maven-3.3.9/bin:/usr/local/mysql/bin:$HOME/.jenv/bin:/usr/local/opt/postgresql@13/bin:$PATH
+export PATH=bin:node_modules/.bin:$HOME/bin:$HOME/.zprofile:$HOME/.cargo/bin:$N_PREFIX/bin:$PYENV_ROOT/bin:/usr/local/bin:/usr/local/opt/openssl@1.1/bin:/usr/local/apache-maven-3.3.9/bin:/usr/local/mysql/bin:$HOME/.jenv/bin:/usr/local/opt/postgresql@13/bin:$PATH
 
 
 # Preferred editor
@@ -84,6 +84,10 @@ export PYTHON="$(which python)"
 # Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+  # Setup Theme
+  autoload -Uz promptinit
+  promptinit
+  prompt cloud
 fi
 
 # Frum for Ruby (initialize if available and don't err if not)

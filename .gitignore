@@ -10,6 +10,8 @@
 !.tmux.conf
 !.vimrc
 !.zshrc
+!.zpreztorc
+!.zprofile
 !.ckrc
 !ck-tmux.sh
 !script
