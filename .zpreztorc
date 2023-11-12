@@ -1,1 +1,23 @@
-zstyle ':prezto:load' pmodule 'environment' 'terminal' 'git' 'prompt' 'autosuggestions'
+zstyle ':prezto:load' pmodule \
+'environment' \
+'terminal' \
+'git' \
+'prompt' \
+'autosuggestions' \
+'command-not-found' \
+'osx' \
+'rsync' \
+'ruby' \
+'rails' \
+'node' \
+'history' \
+'history-substring-search' \
+'homebrew' \
+'macports' \
+'gnu-utility' \
+'ssh' \
+'syntax-highlighting' \
+'archive' \
+'completion' \
+'directory' \
+
