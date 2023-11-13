@@ -50,7 +50,7 @@ gbdall() {
 export PYENV_ROOT="$HOME/.pyenv"
 export N_PREFIX="$HOME/n"
 
-export PATH=bin:node_modules/.bin:$HOME/bin:$HOME/.zprofile:$HOME/.cargo/bin:$N_PREFIX/bin:$PYENV_ROOT/bin:/usr/local/apache-maven-3.3.9/bin:/usr/local/mysql/bin:$HOME/.jenv/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
+export PATH=bin:node_modules/.bin:$HOME/bin:$HOME/.zprofile:$HOME/.cargo/bin:$N_PREFIX/bin:$PYENV_ROOT/bin:/usr/local/apache-maven-3.3.9/bin:$HOME/.jenv/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 
 
 # Preferred editor
