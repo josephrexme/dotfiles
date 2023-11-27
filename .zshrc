@@ -56,12 +56,15 @@ export PATH=bin:node_modules/.bin:$HOME/bin:$HOME/.zprofile:$HOME/.cargo/bin:$N_
 # Preferred editor
 export EDITOR='vim'
 
-# Compilation flags
-export ARCHFLAGS="-arch x86_64"
-export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3/lib/pkgconfig"
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew_prefix openssl@3)"
+###########################################
+# Compilation flags (Caution: OS Specific)
+# #########################################
+# export ARCHFLAGS="-arch x86_64" <- Bad for Apple M3, Good for Intel
+export ARCHFLAGS="-arch arm64" # M-seriese chip
+# export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
+# export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@1.1/lib/pkgconfig"
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 # These are added to allow ruby > 3.2 install on M3 chip
 export CPATH="/opt/homebrew/include"
@@ -93,6 +96,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   promptinit
   prompt cloud
 fi
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#888888'
 
 # Frum for Ruby (initialize if available and don't err if not)
 if command -v "frum" > /dev/null 2>&1; then eval "$(frum init)"; fi
