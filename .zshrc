@@ -41,6 +41,76 @@ gbdall() {
   git branch | grep "$1" | xargs git branch -D
 }
 
+# Version Management (Ruby, Node, Python)
+vm() {
+  case $1 in
+    ruby)
+      case $2 in
+        ls)
+          frum versions
+          ;;
+        rm)
+          frum uninstall $3
+          ;;
+        *)
+          # check if version is installed
+          if ! frum versions | grep -q "$2"; then
+            frum install $2 --with-openssl-dir=$(brew --prefix openssl@1.1) --with-readline-dir=$(brew --prefix readline)
+          else
+            echo "Changing $1 version to $2"
+            frum global $2
+          fi
+          ;;
+      esac
+      ;;
+    node)
+      case $2 in
+        ls)
+          n ls
+          ;;
+        rm)
+          n rm $3
+          ;;
+        *)
+          n $2
+          ;;
+      esac
+      ;;
+    py)
+      case $2 in
+        ls)
+          pyenv versions
+          ;;
+        rm)
+          pyenv uninstall $3
+          ;;
+        *)
+          if ! pyenv versions | grep -q "$2"; then
+            pyenv install $2
+          else
+            echo "Changing $1 version to $2"
+            pyenv global $2
+          fi
+          ;;
+      esac
+      ;;
+    *)
+      # echo "Usage: vm ruby|node|py ls|rm|<version>"
+      cat <<EOF
+Usage: vm ruby|node|py ls|rm|<version>
+
+Examples:
+  vm ruby ls
+  vm node ls
+  vm py ls
+  vm node 20.10.0
+  vm ruby 3.2.2
+  vm py 3.11.6
+EOF
+      ;;
+  esac
+}
+
 
 
 #######################
@@ -48,7 +118,7 @@ gbdall() {
 #######################
 
 export PYENV_ROOT="$HOME/.pyenv"
-export N_PREFIX="$HOME/n"
+export N_PREFIX="$HOME/.config/n"
 
 export PATH=bin:node_modules/.bin:$HOME/bin:$HOME/.zprofile:$HOME/.cargo/bin:$N_PREFIX/bin:$PYENV_ROOT/bin:/usr/local/apache-maven-3.3.9/bin:$HOME/.jenv/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 
