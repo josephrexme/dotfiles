@@ -64,17 +64,8 @@ vm() {
       esac
       ;;
     node)
-      case $2 in
-        ls)
-          n ls
-          ;;
-        rm)
-          n rm $3
-          ;;
-        *)
-          n $2
-          ;;
-      esac
+      # All commands are inspired by n so it should just work by passing all arguments from 2nd on
+      n $2 $3 $4 $5 $6 $7 $8 $9
       ;;
     py)
       case $2 in
