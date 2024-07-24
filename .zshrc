@@ -44,7 +44,7 @@ gbdall() {
 # Version Management (Ruby, Node, Python)
 vm() {
   case $1 in
-    ruby)
+    rb)
       case $2 in
         ls)
           frum versions
@@ -54,16 +54,19 @@ vm() {
           ;;
         *)
           # check if version is installed
-          if ! frum versions | grep -q "$2"; then
+          version_found=$(frum versions | grep "$2")
+          if [ -z "$version_found" ]; then
+            echo "Installing $2"
             frum install $2 --with-openssl-dir=$(brew --prefix openssl@1.1) --with-readline-dir=$(brew --prefix readline)
+            frum local $2
           else
             echo "Changing $1 version to $2"
-            frum global $2
+            frum local $2
           fi
           ;;
       esac
       ;;
-    node)
+    js)
       # All commands are inspired by n so it should just work by passing all arguments from 2nd on
       n $2 $3 $4 $5 $6 $7 $8 $9
       ;;
@@ -86,7 +89,7 @@ vm() {
       esac
       ;;
     *)
-      # echo "Usage: vm ruby|node|py ls|rm|<version>"
+      # echo "Usage: vm rb|js|py ls|rm|<version>"
       cat <<EOF
 Usage: vm ruby|node|py ls|rm|<version>
 
@@ -161,6 +164,9 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#888888'
 
 # Frum for Ruby (initialize if available and don't err if not)
 if command -v "frum" > /dev/null 2>&1; then eval "$(frum init)"; fi
+# Chruby initialization
+# source $HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh
+# source $HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh
 # Pyenv for Python (initialize if available and don't err if not)
 if command -v "pyenv" > /dev/null 2>&1; then eval "$(pyenv init -)"; fi
 
@@ -203,5 +209,6 @@ alias inspectappson='defaults write -g WebKitDeveloperExtras -bool YES'
 alias inspectappsoff='defaults write -g WebKitDeveloperExtras -bool NO'
 alias rmpid='rm -f /usr/local/var/postgres/postmaster.pid'
 alias disable_fork_safety='export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES'
+alias gsqclean='git checkout -q main && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base main $branch) && [[ $(git cherry main $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done'
 
 

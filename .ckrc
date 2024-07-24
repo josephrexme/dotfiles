@@ -33,3 +33,7 @@ ckghost() {
   # Add needed ENV vars locally for rake to find
   env $(grep -v '^#' $HOME/.secret-env | xargs) rake "db:ghost[$target]"
 }
+
+ck_newsletter_paid() {
+  echo 'np=Billing::Product.newsletter_paid.first; np.prices.update_all(has_trial_period: true)' | spring rails c
+}
