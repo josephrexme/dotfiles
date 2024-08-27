@@ -175,9 +175,9 @@ if command -v "pyenv" > /dev/null 2>&1; then eval "$(pyenv init -)"; fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Source ConvertKit
-if [ -f "${HOME}/.ckrc" ]; then
-  source "${HOME}/.ckrc"
+# Source Kit Configurations
+if [ -f "${HOME}/.kitrc" ]; then
+  source "${HOME}/.kitrc"
 fi
 
 

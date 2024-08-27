@@ -4,27 +4,27 @@
 
 
 # ALIASES
-alias ckdev='yarn | yarn build:server | yarn webpack-dev-server'
-alias cktmux='~/ck-tmux.sh'
-alias ckjobs='bundle exec sidekiq -c 3 -q all'
+alias kitdev='yarn | yarn build:server | yarn webpack-dev-server'
+alias kitmux='~/kitmux.sh'
+alias kitjobs='bundle exec sidekiq -c 3 -q all'
 alias kill_filekit='cat $FILEKIT_PATH/tmp/pids/server.pid | xargs -n1 -I pid kill -9 pid'
-alias ck_stripe_sync='bundle exec rake billing:sync_products_from_stripe'
-alias ck_es_indices='bundle exec rake elasticsearch:repositories:create_indices'
+alias kit_stripe_sync='bundle exec rake billing:sync_products_from_stripe'
+alias kit_es_indices='bundle exec rake elasticsearch:repositories:create_indices'
 
 
 # ENV VARS
-export CK_PATH="$HOME/Projects/ConvertKit/convertkit"
-export FILEKIT_PATH="$HOME/Projects/ConvertKit/filekit"
+export KIT_APP_PATH="$HOME/Projects/Kit/kit-app"
+export FILEKIT_PATH="$HOME/Projects/Kit/filekit"
 
 
 # COMMANDS
 
 ## Set up an employee plan and upgrade user to it
-ck_upgrade_plan() {
+kit_upgrade_plan() {
   echo 'p = Plan.find_or_create_by(stripe_id: "plan_FEKhLIpMh3Xb3m", name: "ConvertKit Employee", slug: "plan_FEKhLIpMh3Xb3m", amount: 0); Account.first.update(plan_id: p.stripe_id)' | spring rails c
 }
 
-ckghost() {
+kitghost() {
   [[ "$1" == "-x" ]] && note="Running ghost migration on $2" || note="Running dry ghost migration on $1"
   [[ "$1" == "-x" ]] && target="$2, execute" || target="$1"
 
@@ -34,6 +34,6 @@ ckghost() {
   env $(grep -v '^#' $HOME/.secret-env | xargs) rake "db:ghost[$target]"
 }
 
-ck_newsletter_paid() {
+kit_newsletter_paid() {
   echo 'np=Billing::Product.newsletter_paid.first; np.prices.update_all(has_trial_period: true)' | spring rails c
 }
