@@ -1,5 +1,5 @@
 #############################
-# ConvertKit Configurations #
+# Kit Configurations #
 #############################
 
 
@@ -21,7 +21,7 @@ export FILEKIT_PATH="$HOME/Projects/Kit/filekit"
 
 ## Set up an employee plan and upgrade user to it
 kit_upgrade_plan() {
-  echo 'p = Plan.find_or_create_by(stripe_id: "plan_FEKhLIpMh3Xb3m", name: "ConvertKit Employee", slug: "plan_FEKhLIpMh3Xb3m", amount: 0); Account.first.update(plan_id: p.stripe_id)' | spring rails c
+  echo 'p = Plan.find_or_create_by(stripe_id: "plan_FEKhLIpMh3Xb3m", name: "Kit Employee", slug: "plan_FEKhLIpMh3Xb3m", amount: 0); Account.first.update(plan_id: p.stripe_id)' | spring rails c
 }
 
 kitghost() {
