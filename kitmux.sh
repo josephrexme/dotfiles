@@ -19,5 +19,5 @@ else
     send-keys 'docker compose --file $KIT_APP_PATH/dev/docker-compose-dependencies-m1.yml up' C-m \; \
     select-pane -t 0 \; \
     split-window -v -p 50 \; \
-    send-keys '(sleep 30 && cd $KIT_APP_PATH && rails s)' C-m \;
+    send-keys '(sleep 30 && cd $KIT_APP_PATH && be rails s)' C-m \;
 fi

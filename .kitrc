@@ -4,12 +4,13 @@
 
 
 # ALIASES
-alias kitdev='yarn | yarn build:server | yarn webpack-dev-server'
+alias kitdev='yarn | yarn build:server | yarn dev'
 alias kitmux='~/kitmux.sh'
 alias kitjobs='bundle exec sidekiq -c 3 -q all'
 alias kill_filekit='cat $FILEKIT_PATH/tmp/pids/server.pid | xargs -n1 -I pid kill -9 pid'
 alias kit_stripe_sync='bundle exec rake billing:sync_products_from_stripe'
 alias kit_es_indices='bundle exec rake elasticsearch:repositories:create_indices'
+alias kit_lpserve='rm -rf dist && NODE_OPTIONS=--openssl-legacy-provider node ./scripts/build.js && yarn server:start'
 
 
 # ENV VARS
@@ -37,3 +38,4 @@ kitghost() {
 kit_newsletter_paid() {
   echo 'np=Billing::Product.newsletter_paid.first; np.prices.update_all(has_trial_period: true)' | spring rails c
 }
+
