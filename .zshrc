@@ -1,4 +1,83 @@
 #######################
+# ENV Variables
+#######################
+
+export PYENV_ROOT="$HOME/.pyenv"
+export N_PREFIX="$HOME/.config/n"
+
+export PATH=bin:node_modules/.bin:$HOME/bin:$HOME/.zprofile:$HOME/.cargo/bin:$N_PREFIX/bin:$PYENV_ROOT/bin:/usr/local/apache-maven-3.3.9/bin:$HOME/.jenv/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
+# export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+
+# Preferred editor
+export EDITOR='vim'
+
+###########################################
+# Compilation flags (Caution: OS Specific)
+# #########################################
+# export ARCHFLAGS="-arch x86_64" <- Bad for Apple M3, Good for Intel
+export ARCHFLAGS="-arch arm64" # M-seriese chip
+# export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
+# export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@1.1/lib/pkgconfig"
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+
+# These are added to allow ruby > 3.2 install on M3 chip
+export CPATH="/opt/homebrew/include"
+export LIBRARY_PATH="/opt/homebrew/lib"
+
+# FZF config
+export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_OPTS="--reverse --inline-info"
+
+# ssh
+export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+export PYTHON="$(which python)"
+# export MANPATH="/usr/local/man:$MANPATH"
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+
+
+#######################
+# Initializations
+#######################
+
+# Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+  # Setup Theme
+  autoload -Uz promptinit
+  promptinit
+  prompt cloud
+fi
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#888888'
+
+# Direnv for directory-based env vars
+if command -v "direnv" > /dev/null 2>&1; then eval "$(direnv hook zsh)"; fi
+
+# Frum for Ruby (initialize if available and don't err if not)
+if command -v "frum" > /dev/null 2>&1; then eval "$(frum init)"; fi
+# Chruby initialization
+# source $HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh
+# source $HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh
+# Pyenv for Python (initialize if available and don't err if not)
+if command -v "pyenv" > /dev/null 2>&1; then eval "$(pyenv init -)"; fi
+
+# Autojump
+[ -f $(brew --prefix)/etc/profile.d/autojump.sh ] && . $(brew --prefix)/etc/profile.d/autojump.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Source Kit Configurations
+if [ -f "${HOME}/.kitrc" ]; then
+  source "${HOME}/.kitrc"
+fi
+
+
+
+#######################
 # Functions
 #######################
 
@@ -105,80 +184,65 @@ EOF
   esac
 }
 
-
-
-#######################
-# ENV Variables
-#######################
-
-export PYENV_ROOT="$HOME/.pyenv"
-export N_PREFIX="$HOME/.config/n"
-
-export PATH=bin:node_modules/.bin:$HOME/bin:$HOME/.zprofile:$HOME/.cargo/bin:$N_PREFIX/bin:$PYENV_ROOT/bin:/usr/local/apache-maven-3.3.9/bin:$HOME/.jenv/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
-
-
-# Preferred editor
-export EDITOR='vim'
-
-###########################################
-# Compilation flags (Caution: OS Specific)
-# #########################################
-# export ARCHFLAGS="-arch x86_64" <- Bad for Apple M3, Good for Intel
-export ARCHFLAGS="-arch arm64" # M-seriese chip
-# export LDFLAGS="-L/opt/homebrew/opt/openssl@1.1/lib"
-# export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@1.1/lib/pkgconfig"
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
-
-# These are added to allow ruby > 3.2 install on M3 chip
-export CPATH="/opt/homebrew/include"
-export LIBRARY_PATH="/opt/homebrew/lib"
-
-# FZF config
-export FZF_DEFAULT_COMMAND='ag -g ""'
-export FZF_DEFAULT_OPTS="--reverse --inline-info"
-
-# ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-export PYTHON="$(which python)"
-# export MANPATH="/usr/local/man:$MANPATH"
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-
-
-#######################
-# Initializations
-#######################
-
-# Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-  # Setup Theme
-  autoload -Uz promptinit
-  promptinit
-  prompt cloud
-fi
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#888888'
-
-# Frum for Ruby (initialize if available and don't err if not)
-if command -v "frum" > /dev/null 2>&1; then eval "$(frum init)"; fi
-# Chruby initialization
-# source $HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh
-# source $HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh
-# Pyenv for Python (initialize if available and don't err if not)
-if command -v "pyenv" > /dev/null 2>&1; then eval "$(pyenv init -)"; fi
-
-# Autojump
-[ -f $(brew_prefix)/etc/profile.d/autojump.sh ] && . $(brew_prefix)/etc/profile.d/autojump.sh
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Source Kit Configurations
-if [ -f "${HOME}/.kitrc" ]; then
-  source "${HOME}/.kitrc"
-fi
+# pkg to use the directory assigned (uses direnv) JS package manager based on PKG_MGR env
+pkg() {
+  case $PKG_MGR in
+    pnpm)
+      echo "using pnpm"
+      case $1 in
+        init)
+          pnpm init
+          ;;
+        install)
+          pnpm install
+          ;;
+        add)
+          pnpm add $2
+          ;;
+        self-update)
+          pnpm self-update
+          ;;
+        *)
+          pnpm $1 $2 $3 $4
+          ;;
+      esac
+      ;;
+    yarn)
+      echo "using yarn"
+      case $1 in
+        init)
+          yarn init
+          ;;
+        install)
+          yarn
+          ;;
+        add)
+          yarn add $2
+          ;;
+        *)
+          yarn run $1 $2 $3 $4
+          ;;
+      esac
+      ;;
+    *)
+      echo "using npm"
+      case $1 in
+        init)
+          npm init
+          ;;
+        install)
+          npm install
+          ;;
+        add)
+          npm i $2
+          ;;
+        *)
+          npm run $1 $2 $3 $4
+          ;;
+      esac
+      ;;
+  esac
+}
 
 
 
@@ -211,6 +275,3 @@ alias rmpid='rm -f /usr/local/var/postgres/postmaster.pid'
 alias disable_fork_safety='export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES'
 alias gsqclean='git checkout -q main && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base main $branch) && [[ $(git cherry main $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done'
 
-
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
