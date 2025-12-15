@@ -2,14 +2,8 @@
 
 echo "Begin setting up Joseph's environment"
 
-# Copy over dotfiles
-echo "Copying over dotfiles"
-cp .zshrc ${HOME}
-cp .vimrc ${HOME}
-cp .gitconfig ${HOME}
-cp .gitignore_global ${HOME}
-cp .tmux.conf ${HOME}
-
+# Install necessities on Linux
+echo "Installing necessities on Linux"
 if [ "$(uname)" = 'Linux' ]; then
   # Debian based systems
   if [ "$(grep -Ei 'debian|buntu|mint|kali' /etc/*release)" ]; then
@@ -29,13 +23,28 @@ if [ "$(uname)" = 'Linux' ]; then
   fi
 fi
 
+# Check if stow is installed
+if ! command -v stow &> /dev/null; then
+    echo "Error: GNU Stow is not installed."
+    echo "Stow is required to manage these dotfiles. It symlinks the configuration files to your home directory."
+    echo "Please install it and run this script again."
+    echo "  MacOS: brew install stow"
+    echo "  Debian/Ubuntu: sudo apt-get install stow"
+    exit 1
+fi
+
+# Symlink dotfiles to home directory using stow
+echo "Symlinking dotfiles to home directory"
+stow -t ${HOME} -R zsh vim git tmux ack
 
 # Install prezto for zsh
+echo "Installing prezto for zsh"
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
 # Install vim-plug
+echo "Installing vim-plug"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-echo "Done setting up Joseph's environment"
+echo "Done setting up your development environment!"
 
