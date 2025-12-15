@@ -49,8 +49,7 @@ It runs on debian based Linux distributions and MacOS.
 - **Installs System Packages**: (Linux only) Installs `zsh`, `vim`, `git`, `tmux`, etc. via `apt-get`.
 - **Installs Prezto**: Clones the [Prezto](https://github.com/sorin-ionescu/prezto) repository for Zsh configuration.
 - **Installs Vim-Plug**: Downloads [vim-plug](https://github.com/junegunn/vim-plug) for managing Vim plugins.
-
-> **Note**: The setup script may attempt to copy some dotfiles from the root directory. You can safely ignore errors regarding missing files if you have already used `stow` as described above.
+- **Symlinks Dotfiles**: Uses `stow` to link configuration packages.
 
 ## Directory Structure
 
