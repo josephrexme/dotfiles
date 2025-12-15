@@ -5,7 +5,7 @@
 export PYENV_ROOT="$HOME/.pyenv"
 export N_PREFIX="$HOME/.config/n"
 
-export PATH=bin:node_modules/.bin:$HOME/bin:$HOME/.zprofile:$HOME/.cargo/bin:$N_PREFIX/bin:$PYENV_ROOT/bin:/usr/local/apache-maven-3.3.9/bin:$HOME/.jenv/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
+export PATH=bin:node_modules/.bin:$HOME/bin:${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$HOME/.zprofile:$HOME/.cargo/bin:$N_PREFIX/bin:$PYENV_ROOT/bin:/usr/local/apache-maven-3.3.9/bin:$HOME/.jenv/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 # export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 
@@ -43,6 +43,14 @@ export PYTHON="$(which python)"
 #######################
 # Initializations
 #######################
+
+# ASDF
+# append completions to fpath
+if [[ -s "${ASDF_DATA_DIR:-$HOME}/.asdf/completions/_asdf" ]]; then
+  fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+  # initialise completions with ZSH's compinit
+  autoload -Uz compinit && compinit
+fi
 
 # Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -275,3 +283,6 @@ alias rmpid='rm -f /usr/local/var/postgres/postmaster.pid'
 alias disable_fork_safety='export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES'
 alias gsqclean='git checkout -q main && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base main $branch) && [[ $(git cherry main $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done'
 
+
+# Added by Antigravity
+export PATH="/Users/silverdust/.antigravity/antigravity/bin:$PATH"
