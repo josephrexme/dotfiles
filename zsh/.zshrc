@@ -4,9 +4,9 @@
 
 export PYENV_ROOT="$HOME/.pyenv"
 export N_PREFIX="$HOME/.config/n"
+export PNPM_HOME="$HOME/Library/pnpm"
 
-export PATH=bin:node_modules/.bin:$HOME/bin:${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$HOME/.zprofile:$HOME/.cargo/bin:$N_PREFIX/bin:$PYENV_ROOT/bin:/usr/local/apache-maven-3.3.9/bin:$HOME/.jenv/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
-# export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH=bin:node_modules/.bin:$HOME/bin:$HOME/.antigravity/antigravity/bin:$PNPM_HOME:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$HOME/.zprofile:$HOME/.cargo/bin:$N_PREFIX/bin:$PYENV_ROOT/bin:/usr/local/apache-maven-3.3.9/bin:$HOME/.jenv/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 
 
 # Preferred editor
@@ -181,11 +181,11 @@ vm() {
 Usage: vm ruby|node|py ls|rm|<version>
 
 Examples:
-  vm ruby ls
-  vm node ls
+  vm rb ls
+  vm js ls
   vm py ls
-  vm node 20.10.0
-  vm ruby 3.2.2
+  vm js 20.10.0
+  vm rb 3.2.2
   vm py 3.11.6
 EOF
       ;;
@@ -283,6 +283,3 @@ alias rmpid='rm -f /usr/local/var/postgres/postmaster.pid'
 alias disable_fork_safety='export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES'
 alias gsqclean='git checkout -q main && git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do mergeBase=$(git merge-base main $branch) && [[ $(git cherry main $(git commit-tree $(git rev-parse $branch^{tree}) -p $mergeBase -m _)) == "-"* ]] && git branch -D $branch; done'
 
-
-# Added by Antigravity
-export PATH="/Users/silverdust/.antigravity/antigravity/bin:$PATH"
